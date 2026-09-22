@@ -56,8 +56,8 @@ A production-grade web dashboard for managing and analyzing AI-powered voice cal
 ## 📂 Project Structure
 
 ```
-├── previous context/       # AI prompt references & context docs
 ├── public/                 # Static assets
+
 ├── src/
 │   ├── components/         # Reusable UI components & modals
 │   ├── context/            # React context providers (App state)

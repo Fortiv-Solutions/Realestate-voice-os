@@ -225,42 +225,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
           ))}
         </div>
-
-        {/* User / Workspace Footer */}
-        <div className={`border-t border-[#E2EEF8] bg-[#F8FCFF] ${
-          isCollapsed ? 'p-2 flex flex-col items-center gap-2' : 'p-3'
-        }`}>
-          {isCollapsed ? (
-            <>
-              <div
-                className="w-9 h-9 rounded-lg bg-[#E0F2FE] text-[#0284C7] font-bold text-xs flex items-center justify-center border border-[#BAE6FD] cursor-pointer hover:bg-[#BAE6FD] transition-colors"
-                title="Vala Divyraj (Admin)"
-              >
-                VD
-              </div>
-              <button
-                onClick={onToggleCollapse}
-                className="hidden lg:flex p-1.5 rounded-lg text-[#94A3B8] hover:text-[#0284C7] hover:bg-[#E0F2FE] transition-colors"
-                title="Expand sidebar"
-              >
-                <PanelLeftOpen className="w-4 h-4" />
-              </button>
-            </>
-          ) : (
-            <div className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#E2EEF8] shadow-subtle">
-              <div className="flex items-center gap-2.5 truncate">
-                <div className="w-7 h-7 rounded-lg bg-[#E0F2FE] text-[#0284C7] font-bold text-xs flex items-center justify-center border border-[#BAE6FD] shrink-0">
-                  VD
-                </div>
-                <div className="truncate">
-                  <div className="text-xs font-bold text-[#0F172A] truncate">Vala Divyraj</div>
-                  <div className="text-[10px] text-[#64748B] truncate">Admin • Ahmedabad</div>
-                </div>
-              </div>
-              <div className="w-2.5 h-2.5 rounded-full bg-[#06B6D4] animate-pulse shadow-cyan-glow shrink-0" title="Voice Engine Connected" />
-            </div>
-          )}
-        </div>
       </aside>
     </>
   );

@@ -33,13 +33,13 @@ export const Header: React.FC<HeaderProps> = ({
   const { openCreateCampaignModal, navigate, openExportModal, openTestCallModal } = useApp();
 
   return (
-    <header className="sticky top-0 z-30 bg-[#F8FCFF]/90 backdrop-blur-md border-b border-[#E2EEF8] px-4 lg:px-8 py-3.5 transition-all">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+    <header className="sticky top-0 z-30 bg-[#F8FCFF]/90 backdrop-blur-md border-b border-[#E2EEF8] px-4 lg:px-8 h-16 flex items-center transition-all">
+      <div className="flex items-center justify-between gap-3 w-full">
         {/* Left Side: Title, Subtitle & Sidebar Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={onMenuToggle}
-            className="p-2 rounded-xl border border-[#E2EEF8] bg-white text-[#64748B] hover:text-[#0284C7] hover:border-[#BAE6FD] hover:bg-[#F0F7FD] transition-colors shadow-subtle flex items-center justify-center cursor-pointer"
+            className="p-2 rounded-xl border border-[#E2EEF8] bg-white text-[#64748B] hover:text-[#0284C7] hover:border-[#BAE6FD] hover:bg-[#F0F7FD] transition-colors shadow-subtle flex items-center justify-center cursor-pointer shrink-0"
             aria-label="Toggle Sidebar"
             title={isSidebarCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
           >
@@ -49,14 +49,14 @@ export const Header: React.FC<HeaderProps> = ({
               <Menu className="w-4 h-4" />
             )}
           </button>
-          <div>
-            <h1 className="text-lg font-extrabold text-[#0F172A] tracking-tight">{title}</h1>
-            {subtitle && <p className="text-xs text-[#64748B] mt-0.5">{subtitle}</p>}
+          <div className="min-w-0">
+            <h1 className="text-base sm:text-lg font-extrabold text-[#0F172A] tracking-tight leading-tight truncate">{title}</h1>
+            {subtitle && <p className="text-xs text-[#64748B] leading-none mt-1 truncate hidden sm:block">{subtitle}</p>}
           </div>
         </div>
 
         {/* Right Side Controls */}
-        <div className="flex items-center flex-wrap gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {/* Date Range Selector */}
           <DateRangeDropdown />
 

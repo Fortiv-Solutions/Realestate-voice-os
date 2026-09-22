@@ -25,13 +25,13 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`p-4.5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card hover:border-[#BAE6FD] hover:shadow-cyan-glow/20 transition-all ${
+      className={`p-4 sm:p-5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card hover:border-[#BAE6FD] hover:shadow-cyan-glow/20 transition-all flex flex-col justify-between ${
         onClick ? 'cursor-pointer' : ''
       }`}
     >
-      <div className="flex items-center justify-between gap-2 mb-2">
+      <div className="flex items-center justify-between gap-2 mb-2 min-w-0">
         <span className="text-xs font-semibold text-[#64748B] tracking-wide truncate">{title}</span>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 shrink-0">
           {badge && (
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#ECFEFF] text-[#0891B2] border border-[#A5F3FC]">
               {badge}
@@ -41,12 +41,12 @@ export const MetricCard: React.FC<MetricCardProps> = ({
         </div>
       </div>
 
-      <div className="flex items-baseline justify-between gap-2">
-        <div className="text-2xl font-extrabold tracking-tight text-[#0F172A]">{value}</div>
+      <div className="flex items-baseline justify-between gap-2 min-w-0">
+        <div className="text-2xl font-extrabold tracking-tight text-[#0F172A] leading-none">{value}</div>
 
         {change && (
           <div
-            className={`flex items-center gap-0.5 text-xs font-bold px-2 py-0.5 rounded-lg ${
+            className={`flex items-center gap-0.5 text-xs font-bold px-2 py-0.5 rounded-lg shrink-0 ${
               changeType === 'positive'
                 ? 'bg-[#E0F2FE] text-[#0284C7] border border-[#BAE6FD]'
                 : changeType === 'negative'
@@ -62,7 +62,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
         )}
       </div>
 
-      {subtext && <p className="text-[11px] text-[#94A3B8] mt-1.5 font-medium truncate">{subtext}</p>}
+      {subtext && <p className="text-[11px] text-[#94A3B8] mt-2 font-medium truncate">{subtext}</p>}
     </div>
   );
 };

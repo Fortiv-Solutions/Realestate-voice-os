@@ -72,7 +72,7 @@ export const AnalyticsPage: React.FC<{ initialSubTab?: string }> = ({ initialSub
       {/* Sub-tab 1: Call Analytics */}
       {subTab === 'calls' && (
         <div className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <MetricCard title="Total Calls Dialed" value="12,482" change="+12.8%" />
             <MetricCard title="Answering Rate" value="68.4%" change="+4.2%" />
             <MetricCard title="Avg Call Length" value="4m 32s" changeType="neutral" />

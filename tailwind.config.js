@@ -52,6 +52,9 @@ export default {
       borderRadius: {
         'card': '14px',
       },
+      spacing: {
+        '4.5': '1.125rem',
+      },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'glow-cyan': 'glowCyan 2.5s ease-in-out infinite alternate',

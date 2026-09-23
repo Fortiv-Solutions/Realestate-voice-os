@@ -223,7 +223,7 @@ export const AppContent: React.FC = () => {
   const meta = getPageMeta();
 
   return (
-    <div className="min-h-screen bg-[#F8FCFF] flex text-[#0F172A]">
+    <div className="min-h-screen bg-[#F8F9FA] flex text-[#111827]">
       {/* Collapsible & Openable Sidebar */}
       <Sidebar
         isOpen={isSidebarOpen}
@@ -234,7 +234,7 @@ export const AppContent: React.FC = () => {
 
       {/* Main Content Area */}
       <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${
-        isSidebarCollapsed ? 'lg:pl-[72px]' : 'lg:pl-64'
+        isSidebarCollapsed ? 'lg:pl-[76px]' : 'lg:pl-64'
       }`}>
         {/* Top Header */}
         <Header

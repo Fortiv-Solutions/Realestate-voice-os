@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, RotateCcw, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Download } from 'lucide-react';
 
 interface WaveformPlayerProps {
   durationSec: number;
   durationFormatted: string;
   onTimeUpdate?: (currentSec: number) => void;
   autoPlay?: boolean;
+  compact?: boolean;
 }
 
 export const WaveformPlayer: React.FC<WaveformPlayerProps> = ({
@@ -13,17 +14,17 @@ export const WaveformPlayer: React.FC<WaveformPlayerProps> = ({
   durationFormatted,
   onTimeUpdate,
   autoPlay = false,
+  compact = false,
 }) => {
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
   const [isMuted, setIsMuted] = useState(false);
 
-  // Generate 64 deterministic waveform bar heights
+  // Generate 56 deterministic waveform bar heights
   const bars = [
     24, 40, 65, 80, 50, 30, 20, 45, 75, 90, 60, 35, 25, 40, 70, 85, 95, 60, 45, 30, 55, 70, 40, 20, 35, 65, 80, 50,
     30, 20, 45, 75, 90, 60, 35, 25, 40, 70, 85, 95, 60, 45, 30, 55, 70, 40, 20, 35, 50, 70, 85, 40, 30, 50, 65, 80,
-    45, 30, 20, 40, 60, 75, 35, 20,
   ];
 
   useEffect(() => {
@@ -59,82 +60,75 @@ export const WaveformPlayer: React.FC<WaveformPlayerProps> = ({
   };
 
   return (
-    <div className="p-4.5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card">
-      <div className="flex flex-col gap-3.5">
-        {/* Controls and Timers */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#06B6D4] to-[#0284C7] hover:from-[#0891B2] hover:to-[#0369A1] text-white flex items-center justify-center shadow-md shadow-cyan-500/25 transition-transform active:scale-95"
+    <div className="flex items-center gap-3 w-full">
+      {/* Play/Pause Button */}
+      <button
+        onClick={() => setIsPlaying(!isPlaying)}
+        className="w-9 h-9 rounded-full bg-[#111827] hover:bg-[#1F2937] text-white flex items-center justify-center shrink-0 shadow-xs transition-transform active:scale-95 cursor-pointer"
+        title={isPlaying ? 'Pause' : 'Play'}
+      >
+        {isPlaying ? <Pause className="w-3.5 h-3.5 fill-white" /> : <Play className="w-3.5 h-3.5 fill-white ml-0.5" />}
+      </button>
+
+      {/* Waveform Scrubber */}
+      <div className="flex-1 flex items-center gap-0.5 h-8 select-none cursor-pointer px-2 py-1">
+        {bars.map((height, idx) => {
+          const barPct = (idx / bars.length) * 100;
+          const isPlayed = barPct <= progressPct;
+
+          return (
+            <div
+              key={idx}
+              onClick={() => handleSeek(idx)}
+              className="flex-1 h-full flex items-center justify-center group"
             >
-              {isPlaying ? <Pause className="w-4 h-4 fill-white" /> : <Play className="w-4 h-4 fill-white ml-0.5" />}
-            </button>
-
-            <button
-              onClick={() => {
-                setCurrentTime(0);
-                if (onTimeUpdate) onTimeUpdate(0);
-              }}
-              className="p-2 rounded-xl text-[#64748B] hover:text-[#0F172A] hover:bg-[#F0F7FD] transition-colors"
-              title="Restart from beginning"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </button>
-
-            <div className="text-xs font-bold text-[#0F172A] tracking-tight">
-              <span>{formatSec(currentTime)}</span>
-              <span className="text-[#94A3B8] font-normal mx-1.5">/</span>
-              <span className="text-[#64748B]">{durationFormatted}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {/* Speed selector */}
-            <button
-              onClick={() => {
-                const nextSpeed = playbackSpeed === 1 ? 1.25 : playbackSpeed === 1.25 ? 1.5 : playbackSpeed === 1.5 ? 2 : 1;
-                setPlaybackSpeed(nextSpeed);
-              }}
-              className="px-2.5 py-1 rounded-lg bg-[#E0F2FE] hover:bg-[#BAE6FD] text-[11px] font-bold text-[#0284C7] transition-colors"
-            >
-              {playbackSpeed}x
-            </button>
-
-            <button
-              onClick={() => setIsMuted(!isMuted)}
-              className="p-1.5 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-[#F0F7FD] transition-colors"
-            >
-              {isMuted ? <VolumeX className="w-4 h-4 text-[#EF4444]" /> : <Volume2 className="w-4 h-4" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Waveform Visualization Bars */}
-        <div className="flex items-center gap-0.75 h-12 py-1 select-none cursor-pointer bg-[#F8FCFF] px-3 rounded-xl border border-[#E2EEF8]">
-          {bars.map((height, idx) => {
-            const barPct = (idx / bars.length) * 100;
-            const isPlayed = barPct <= progressPct;
-
-            return (
               <div
-                key={idx}
-                onClick={() => handleSeek(idx)}
-                className="flex-1 h-full flex items-center justify-center group py-0.5"
-              >
-                <div
-                  className={`w-full rounded-full transition-all duration-100 ${
-                    isPlayed
-                      ? 'bg-gradient-to-t from-[#0284C7] to-[#06B6D4] shadow-cyan-glow/50'
-                      : 'bg-[#D4EBF8] group-hover:bg-[#BAE6FD]'
-                  }`}
-                  style={{ height: `${height}%` }}
-                />
-              </div>
-            );
-          })}
-        </div>
+                className={`w-full max-w-[3px] rounded-full transition-all duration-75 ${
+                  isPlayed
+                    ? 'bg-[#2563EB]'
+                    : 'bg-[#D1D5DB] group-hover:bg-[#9CA3AF]'
+                }`}
+                style={{ height: `${Math.max(18, height)}%` }}
+              />
+            </div>
+          );
+        })}
       </div>
+
+      {/* Time Display */}
+      <div className="text-xs font-medium text-[#4B5563] whitespace-nowrap font-mono">
+        <span>{formatSec(currentTime)}</span>
+        <span className="text-[#9CA3AF] mx-1">/</span>
+        <span>{durationFormatted}</span>
+      </div>
+
+      {/* Speed Selector */}
+      <button
+        onClick={() => {
+          const nextSpeed = playbackSpeed === 1 ? 1.25 : playbackSpeed === 1.25 ? 1.5 : playbackSpeed === 1.5 ? 2 : 1;
+          setPlaybackSpeed(nextSpeed);
+        }}
+        className="px-2 py-0.5 rounded-md bg-[#F3F4F6] hover:bg-[#E5E7EB] text-[11px] font-bold text-[#4B5563] transition-colors cursor-pointer"
+        title="Playback Speed"
+      >
+        {playbackSpeed}x
+      </button>
+
+      {/* Download Audio Button */}
+      <button
+        onClick={() => {
+          const blob = new Blob(['Mock audio recording data'], { type: 'audio/wav' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `call-recording-${Date.now()}.wav`;
+          a.click();
+        }}
+        className="p-1.5 rounded-lg text-[#6B7280] hover:text-[#111827] hover:bg-[#F3F4F6] transition-colors cursor-pointer"
+        title="Download Audio"
+      >
+        <Download className="w-4 h-4" />
+      </button>
     </div>
   );
 };

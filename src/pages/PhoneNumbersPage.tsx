@@ -39,23 +39,23 @@ export const PhoneNumbersPage: React.FC = () => {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-extrabold text-[#0F172A]">Telephony & Phone Number Pool</h2>
-          <p className="text-xs text-[#64748B]">Dedicated DIDs, carrier routing, caller ID reputation & line health</p>
+          <h2 className="text-xl font-extrabold text-[#111827] tracking-tight">Telephony & Phone Number Pool</h2>
+          <p className="text-xs text-[#6B7280] mt-1">Dedicated DIDs, carrier routing, caller ID reputation & line health</p>
         </div>
 
         <button
           onClick={() => showToast('Purchase DID', 'Number provisioning opened.', 'info')}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white text-xs font-bold shadow-md shadow-cyan-500/20 transition-all active:scale-98"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-sm transition-all active:scale-98 cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Add Phone Number</span>
         </button>
       </div>
 
-      <div className="p-4 rounded-2xl bg-white border border-[#E2EEF8] shadow-card overflow-hidden">
+      <div className="p-4 rounded-2xl bg-white border border-[#ECEEF1] shadow-card overflow-hidden">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-[#E2EEF8] text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider">
+            <tr className="border-b border-[#ECEEF1] text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">
               <th className="pb-3">Phone Number</th>
               <th className="pb-3">Region / Type</th>
               <th className="pb-3">Assigned Campaign</th>
@@ -64,23 +64,23 @@ export const PhoneNumbersPage: React.FC = () => {
               <th className="pb-3 text-right">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E2EEF8]/60">
+          <tbody className="divide-y divide-[#F0F2F5]">
             {numbers.map((n) => (
-              <tr key={n.id} className="hover:bg-[#F0F7FD] transition-colors">
-                <td className="py-3.5 pr-2 font-mono font-bold text-xs text-[#0F172A] flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#0284C7]" />
+              <tr key={n.id} className="hover:bg-[#F9FAFB] transition-colors">
+                <td className="py-3.5 pr-2 font-mono font-bold text-xs text-[#111827] flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-[#2563EB]" />
                   <span>{n.number}</span>
                 </td>
-                <td className="py-3.5 pr-2 text-[#64748B]">{n.region}</td>
-                <td className="py-3.5 pr-2 font-semibold text-[#0F172A]">{n.assignedCampaign}</td>
+                <td className="py-3.5 pr-2 text-[#6B7280]">{n.region}</td>
+                <td className="py-3.5 pr-2 font-semibold text-[#111827]">{n.assignedCampaign}</td>
                 <td className="py-3.5 pr-2">
-                  <span className="text-[11px] font-bold text-[#0284C7] bg-[#E0F2FE] px-2 py-0.5 rounded-md border border-[#BAE6FD]">
+                  <span className="text-[11px] font-bold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-md border border-[#BFDBFE]">
                     {n.reputationScore}
                   </span>
                 </td>
-                <td className="py-3.5 pr-2 font-mono font-bold text-[#0F172A]">{n.callsToday}</td>
+                <td className="py-3.5 pr-2 font-mono font-bold text-[#111827]">{n.callsToday}</td>
                 <td className="py-3.5 text-right">
-                  <span className="text-[11px] font-bold text-[#0891B2] bg-[#ECFEFF] px-2.5 py-0.5 rounded-full border border-[#A5F3FC]">
+                  <span className="text-[11px] font-bold text-[#10B981] bg-[#ECFDF5] px-2.5 py-0.5 rounded-full border border-[#A7F3D0]">
                     {n.status}
                   </span>
                 </td>

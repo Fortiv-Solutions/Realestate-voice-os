@@ -255,28 +255,28 @@ export const TestCallModal: React.FC = () => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/40 backdrop-blur-xs animate-in fade-in-50">
-      <div className="w-full max-w-4xl bg-white rounded-3xl border border-[#E2EEF8] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/40 backdrop-blur-xs animate-in fade-in-50">
+      <div className="w-full max-w-4xl bg-white rounded-3xl border border-[#ECEEF1] shadow-dropdown overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Bar */}
-        <div className="px-6 py-4 bg-gradient-to-r from-[#F0F7FD] via-white to-[#ECFEFF] border-b border-[#E2EEF8] flex items-center justify-between">
+        <div className="px-6 py-4 bg-[#F8F9FA] border-b border-[#ECEEF1] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#06B6D4] to-[#0284C7] text-white flex items-center justify-center shadow-md shadow-cyan-500/25">
+            <div className="w-10 h-10 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center shadow-xs">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-sm font-extrabold text-[#0F172A]">Live Voice Calling Simulator</h3>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#E0F2FE] text-[#0284C7] border border-[#BAE6FD]">
+                <h3 className="text-sm font-extrabold text-[#111827]">Live Voice Calling Simulator</h3>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE]">
                   Interactive AI Engine
                 </span>
               </div>
-              <p className="text-xs text-[#64748B]">Test real-time conversation logic, objection handling & DNC compliance</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Test real-time conversation logic, objection handling & DNC compliance</p>
             </div>
           </div>
 
           <button
             onClick={closeTestCallModal}
-            className="p-1.5 rounded-xl text-[#94A3B8] hover:text-[#0F172A] hover:bg-[#F0F7FD] transition-colors"
+            className="p-1.5 rounded-xl text-[#9CA3AF] hover:text-[#111827] hover:bg-[#F4F5F7] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -285,19 +285,19 @@ export const TestCallModal: React.FC = () => {
         {/* Modal Main Grid */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
           {/* Left Column: Call Setup & Live Transcript */}
-          <div className="lg:col-span-8 flex flex-col border-r border-[#E2EEF8] bg-white overflow-hidden">
+          <div className="lg:col-span-8 flex flex-col border-r border-[#ECEEF1] bg-white overflow-hidden">
             {/* Setup Controls (When not in call) */}
             {!isCallActive && (
-              <div className="p-5 border-b border-[#E2EEF8] bg-[#F8FCFF] space-y-4">
+              <div className="p-5 border-b border-[#ECEEF1] bg-[#F8F9FA] space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">
                       AI Agent
                     </label>
                     <select
                       value={selectedAgentId}
                       onChange={(e) => setSelectedAgentId(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white border border-[#E2EEF8] text-xs font-semibold text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-[#E5E7EB] text-xs font-semibold text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
                     >
                       {agents.map((a) => (
                         <option key={a.id} value={a.id}>
@@ -308,41 +308,41 @@ export const TestCallModal: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">
                       Callee Name
                     </label>
                     <input
                       type="text"
                       value={calleeName}
                       onChange={(e) => setCalleeName(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white border border-[#E2EEF8] text-xs font-semibold text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-[#E5E7EB] text-xs font-semibold text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
                       placeholder="e.g. Rajesh Patel"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">
                       Property Locality
                     </label>
                     <input
                       type="text"
                       value={propertyLocality}
                       onChange={(e) => setPropertyLocality(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white border border-[#E2EEF8] text-xs font-semibold text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-[#E5E7EB] text-xs font-semibold text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
                       placeholder="e.g. Satellite, Ahmedabad"
                     />
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
-                  <div className="flex items-center gap-2 text-xs text-[#64748B]">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#06B6D4] animate-ping" />
-                    <span>Voice Model: <strong className="text-[#0284C7]">{selectedAgent?.voiceName}</strong></span>
+                  <div className="flex items-center gap-2 text-xs text-[#6B7280]">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB] animate-ping" />
+                    <span>Voice Model: <strong className="text-[#2563EB]">{selectedAgent?.voiceName}</strong></span>
                   </div>
 
                   <button
                     onClick={handleStartCall}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white text-xs font-bold shadow-md shadow-cyan-500/25 transition-all active:scale-98"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-sm transition-all active:scale-98 cursor-pointer"
                   >
                     <Phone className="w-4 h-4 fill-white" />
                     <span>Start Live Test Call</span>
@@ -353,30 +353,30 @@ export const TestCallModal: React.FC = () => {
 
             {/* Active Call Status Header */}
             {isCallActive && (
-              <div className="px-5 py-3.5 bg-gradient-to-r from-[#E0F2FE] to-[#ECFEFF] border-b border-[#BAE6FD] flex items-center justify-between">
+              <div className="px-5 py-3.5 bg-[#EFF6FF] border-b border-[#BFDBFE] flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   {/* Animated Wave Bars */}
                   <div className="flex items-end gap-0.5 h-5">
-                    <span className="w-1 bg-[#0284C7] rounded-full animate-wave-1 h-3" />
-                    <span className="w-1 bg-[#06B6D4] rounded-full animate-wave-2 h-5" />
-                    <span className="w-1 bg-[#0284C7] rounded-full animate-wave-3 h-2" />
-                    <span className="w-1 bg-[#06B6D4] rounded-full animate-wave-4 h-4" />
+                    <span className="w-1 bg-[#2563EB] rounded-full animate-wave-1 h-3" />
+                    <span className="w-1 bg-[#3B82F6] rounded-full animate-wave-2 h-5" />
+                    <span className="w-1 bg-[#2563EB] rounded-full animate-wave-3 h-2" />
+                    <span className="w-1 bg-[#3B82F6] rounded-full animate-wave-4 h-4" />
                   </div>
 
                   <div>
-                    <div className="text-xs font-extrabold text-[#0F172A] flex items-center gap-2">
+                    <div className="text-xs font-extrabold text-[#111827] flex items-center gap-2">
                       <span>Call with {calleeName}</span>
-                      <span className="font-mono text-xs text-[#0284C7] font-bold">[{formatSec(callDurationSec)}]</span>
+                      <span className="font-mono text-xs text-[#2563EB] font-bold">[{formatSec(callDurationSec)}]</span>
                     </div>
-                    <p className="text-[10px] text-[#64748B]">Agent: {selectedAgent?.name}</p>
+                    <p className="text-[10px] text-[#6B7280]">Agent: {selectedAgent?.name}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setIsMuted(!isMuted)}
-                    className={`p-2 rounded-xl border text-xs font-semibold transition-colors ${
-                      isMuted ? 'bg-[#FEF2F2] border-[#FECACA] text-[#EF4444]' : 'bg-white border-[#E2EEF8] text-[#64748B]'
+                    className={`p-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
+                      isMuted ? 'bg-[#FEF2F2] border-[#FECACA] text-[#EF4444]' : 'bg-white border-[#E5E7EB] text-[#6B7280]'
                     }`}
                     title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
                   >
@@ -385,7 +385,7 @@ export const TestCallModal: React.FC = () => {
 
                   <button
                     onClick={() => handleEndCall()}
-                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] text-white text-xs font-bold shadow-sm transition-colors"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] text-white text-xs font-bold shadow-sm transition-colors cursor-pointer"
                   >
                     <PhoneOff className="w-3.5 h-3.5" />
                     <span>End Call</span>
@@ -397,10 +397,10 @@ export const TestCallModal: React.FC = () => {
             {/* Live Chat & Transcript Feed */}
             <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-white custom-scrollbar max-h-[380px]">
               {transcript.length === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[#94A3B8]">
-                  <Bot className="w-10 h-10 mb-2 opacity-40 text-[#0284C7]" />
-                  <p className="text-xs font-bold text-[#475569]">No active call session</p>
-                  <p className="text-[11px] text-[#94A3B8] max-w-xs mt-1">
+                <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[#9CA3AF]">
+                  <Bot className="w-10 h-10 mb-2 opacity-40 text-[#2563EB]" />
+                  <p className="text-xs font-bold text-[#4B5563]">No active call session</p>
+                  <p className="text-[11px] text-[#9CA3AF] max-w-xs mt-1">
                     Click "Start Live Test Call" above to test real-time conversational flows.
                   </p>
                 </div>
@@ -410,28 +410,28 @@ export const TestCallModal: React.FC = () => {
                   return (
                     <div key={t.id} className={`flex gap-2.5 ${isAi ? 'justify-start' : 'justify-end'}`}>
                       {isAi && (
-                        <div className="w-7 h-7 rounded-xl bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center shrink-0 border border-[#BAE6FD]">
+                        <div className="w-7 h-7 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0 border border-[#BFDBFE]">
                           <Bot className="w-4 h-4" />
                         </div>
                       )}
 
                       <div className={`max-w-[80%] rounded-2xl p-3.5 text-xs ${
                         isAi
-                          ? 'bg-[#F8FCFF] border border-[#E2EEF8] text-[#0F172A]'
-                          : 'bg-gradient-to-r from-[#0284C7] to-[#06B6D4] text-white shadow-md shadow-cyan-500/20'
+                          ? 'bg-[#F8F9FA] border border-[#ECEEF1] text-[#111827]'
+                          : 'bg-[#2563EB] text-white shadow-sm'
                       }`}>
                         <div className="flex items-center justify-between gap-3 mb-1">
-                          <span className={`text-[10px] font-extrabold ${isAi ? 'text-[#0284C7]' : 'text-white/95'}`}>
+                          <span className={`text-[10px] font-extrabold ${isAi ? 'text-[#2563EB]' : 'text-white/95'}`}>
                             {t.speakerName}
                           </span>
-                          <span className={`text-[9px] ${isAi ? 'text-[#94A3B8]' : 'text-white/75'}`}>
+                          <span className={`text-[9px] ${isAi ? 'text-[#9CA3AF]' : 'text-white/75'}`}>
                             {t.timestamp}
                           </span>
                         </div>
                         <p className="leading-relaxed whitespace-pre-wrap font-medium">{t.text}</p>
 
                         {t.intentDetected && (
-                          <div className="mt-1.5 pt-1.5 border-t border-black/5 flex items-center gap-1.5 text-[9px] text-[#0891B2] font-bold">
+                          <div className="mt-1.5 pt-1.5 border-t border-black/5 flex items-center gap-1.5 text-[9px] text-[#2563EB] font-bold">
                             <Sparkles className="w-2.5 h-2.5" />
                             <span>Intent: {t.intentDetected}</span>
                           </div>
@@ -439,7 +439,7 @@ export const TestCallModal: React.FC = () => {
                       </div>
 
                       {!isAi && (
-                        <div className="w-7 h-7 rounded-xl bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center shrink-0 font-bold text-xs">
+                        <div className="w-7 h-7 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0 font-bold text-xs">
                           <User className="w-4 h-4" />
                         </div>
                       )}
@@ -449,11 +449,11 @@ export const TestCallModal: React.FC = () => {
               )}
 
               {isAiThinking && (
-                <div className="flex items-center gap-2 text-xs text-[#64748B] bg-[#F0F7FD] p-2.5 rounded-xl w-fit border border-[#E2EEF8]">
-                  <div className="w-2 h-2 rounded-full bg-[#06B6D4] animate-bounce" />
-                  <div className="w-2 h-2 rounded-full bg-[#0284C7] animate-bounce [animation-delay:0.2s]" />
-                  <div className="w-2 h-2 rounded-full bg-[#06B6D4] animate-bounce [animation-delay:0.4s]" />
-                  <span className="text-[11px] text-[#64748B] ml-1 font-medium">AI is analyzing context & generating response...</span>
+                <div className="flex items-center gap-2 text-xs text-[#6B7280] bg-[#F8F9FA] p-2.5 rounded-xl w-fit border border-[#ECEEF1]">
+                  <div className="w-2 h-2 rounded-full bg-[#2563EB] animate-bounce" />
+                  <div className="w-2 h-2 rounded-full bg-[#3B82F6] animate-bounce [animation-delay:0.2s]" />
+                  <div className="w-2 h-2 rounded-full bg-[#60A5FA] animate-bounce [animation-delay:0.4s]" />
+                  <span className="text-[11px] text-[#6B7280] ml-1 font-medium">AI is analyzing context & generating response...</span>
                 </div>
               )}
               <div ref={chatEndRef} />
@@ -461,15 +461,15 @@ export const TestCallModal: React.FC = () => {
 
             {/* Quick Test Chips */}
             {isCallActive && (
-              <div className="p-2.5 bg-[#F8FCFF] border-t border-[#E2EEF8] overflow-x-auto custom-scrollbar flex items-center gap-1.5">
-                <span className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider shrink-0 mr-1">
+              <div className="p-2.5 bg-[#F8F9FA] border-t border-[#ECEEF1] overflow-x-auto custom-scrollbar flex items-center gap-1.5">
+                <span className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-wider shrink-0 mr-1">
                   Test Chips:
                 </span>
                 {quickTestChips.map((chip, i) => (
                   <button
                     key={i}
                     onClick={() => handleSendMessage(chip)}
-                    className="shrink-0 px-2.5 py-1 rounded-lg bg-white border border-[#E2EEF8] hover:border-[#0284C7] text-[11px] text-[#0F172A] hover:bg-[#E0F2FE] hover:text-[#0284C7] font-medium transition-colors"
+                    className="shrink-0 px-2.5 py-1 rounded-lg bg-white border border-[#E5E7EB] hover:border-[#2563EB] text-[11px] text-[#111827] hover:bg-[#EFF6FF] hover:text-[#2563EB] font-medium transition-colors cursor-pointer"
                   >
                     {chip}
                   </button>
@@ -479,20 +479,20 @@ export const TestCallModal: React.FC = () => {
 
             {/* User Utterance Input Bar */}
             {isCallActive && (
-              <div className="p-3 bg-white border-t border-[#E2EEF8] flex items-center gap-2">
+              <div className="p-3 bg-white border-t border-[#ECEEF1] flex items-center gap-2">
                 <input
                   type="text"
                   value={userInput}
                   onChange={(e) => setUserInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Type simulated owner response or click a test chip above..."
-                  className="flex-1 px-3 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-semibold text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                  className="flex-1 px-3 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-semibold text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
                   disabled={isAiThinking}
                 />
                 <button
                   onClick={() => handleSendMessage()}
                   disabled={!userInput.trim() || isAiThinking}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] disabled:opacity-40 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] disabled:opacity-40 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send</span>
@@ -502,28 +502,28 @@ export const TestCallModal: React.FC = () => {
           </div>
 
           {/* Right Column: Dynamic Lead Intelligence & Extracted Data */}
-          <div className="lg:col-span-4 bg-[#F8FCFF] p-5 overflow-y-auto space-y-4">
+          <div className="lg:col-span-4 bg-[#F8F9FA] p-5 overflow-y-auto space-y-4">
             <div>
-              <h4 className="text-xs font-extrabold text-[#0F172A] flex items-center gap-1.5 uppercase tracking-wider">
-                <Building2 className="w-3.5 h-3.5 text-[#0284C7]" />
+              <h4 className="text-xs font-extrabold text-[#111827] flex items-center gap-1.5 uppercase tracking-wider">
+                <Building2 className="w-3.5 h-3.5 text-[#2563EB]" />
                 <span>Real-Time Intelligence</span>
               </h4>
-              <p className="text-[10px] text-[#64748B] mt-0.5">Live CRM entity extraction & score</p>
+              <p className="text-[10px] text-[#6B7280] mt-0.5">Live CRM entity extraction & score</p>
             </div>
 
             {/* Qualification Score Meter */}
-            <div className="p-3.5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card space-y-2">
+            <div className="p-3.5 rounded-2xl bg-white border border-[#ECEEF1] shadow-card space-y-2">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-[#64748B]">Qualification Score</span>
-                <span className="font-extrabold text-[#0284C7]">{extractedData.qualificationScore}%</span>
+                <span className="font-bold text-[#6B7280]">Qualification Score</span>
+                <span className="font-extrabold text-[#2563EB]">{extractedData.qualificationScore}%</span>
               </div>
-              <div className="w-full bg-[#F0F7FD] h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-[#F0F2F5] h-2 rounded-full overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-[#06B6D4] to-[#0284C7] h-full rounded-full transition-all duration-500 shadow-cyan-glow"
+                  className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] h-full rounded-full transition-all duration-500 shadow-xs"
                   style={{ width: `${extractedData.qualificationScore}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[9px] text-[#94A3B8] font-semibold">
+              <div className="flex justify-between text-[9px] text-[#9CA3AF] font-semibold">
                 <span>Cold (0%)</span>
                 <span>Warm (50%)</span>
                 <span>Hot (80%+)</span>
@@ -531,31 +531,31 @@ export const TestCallModal: React.FC = () => {
             </div>
 
             {/* Extracted Fields Card */}
-            <div className="p-4 rounded-2xl bg-white border border-[#E2EEF8] shadow-card space-y-2.5">
-              <div className="text-[11px] font-bold text-[#0F172A] pb-1 border-b border-[#E2EEF8]">
+            <div className="p-4 rounded-2xl bg-white border border-[#ECEEF1] shadow-card space-y-2.5">
+              <div className="text-[11px] font-bold text-[#111827] pb-1 border-b border-[#ECEEF1]">
                 Extracted Property Specifications
               </div>
 
               <div className="space-y-1.5 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-[#64748B]">Property:</span>
-                  <span className="font-bold text-[#0F172A]">{extractedData.propertyType || 'Detecting...'}</span>
+                  <span className="text-[#6B7280]">Property:</span>
+                  <span className="font-bold text-[#111827]">{extractedData.propertyType || 'Detecting...'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#64748B]">Occupancy:</span>
-                  <span className="font-bold text-[#0F172A]">{extractedData.occupancy || 'Detecting...'}</span>
+                  <span className="text-[#6B7280]">Occupancy:</span>
+                  <span className="font-bold text-[#111827]">{extractedData.occupancy || 'Detecting...'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#64748B]">Expected Price:</span>
-                  <span className="font-extrabold text-[#0284C7]">{extractedData.expectedPrice || 'Not specified'}</span>
+                  <span className="text-[#6B7280]">Expected Price:</span>
+                  <span className="font-extrabold text-[#2563EB]">{extractedData.expectedPrice || 'Not specified'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#64748B]">Selling Timeline:</span>
-                  <span className="font-semibold text-[#0F172A]">{extractedData.sellingTimeline || extractedData.sellingIntent}</span>
+                  <span className="text-[#6B7280]">Selling Timeline:</span>
+                  <span className="font-semibold text-[#111827]">{extractedData.sellingTimeline || extractedData.sellingIntent}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#64748B]">Callback Window:</span>
-                  <span className="font-bold text-[#0891B2]">{extractedData.callbackTimeWindow || 'None'}</span>
+                  <span className="text-[#6B7280]">Callback Window:</span>
+                  <span className="font-bold text-[#2563EB]">{extractedData.callbackTimeWindow || 'None'}</span>
                 </div>
                 {extractedData.dncRequested && (
                   <div className="p-2 rounded-xl bg-[#FEF2F2] border border-[#FECACA] text-[#EF4444] text-[11px] font-bold flex items-center gap-1.5">
@@ -567,12 +567,12 @@ export const TestCallModal: React.FC = () => {
             </div>
 
             {/* Active Guardrails Pill */}
-            <div className="p-3.5 rounded-2xl bg-[#E0F2FE] border border-[#BAE6FD] text-xs text-[#0F172A] space-y-1">
-              <div className="flex items-center gap-1.5 font-extrabold text-[#0284C7]">
+            <div className="p-3.5 rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] text-xs text-[#111827] space-y-1">
+              <div className="flex items-center gap-1.5 font-extrabold text-[#2563EB]">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Active Safety Guardrails</span>
               </div>
-              <ul className="text-[10px] text-[#475569] space-y-0.5 list-disc list-inside font-medium">
+              <ul className="text-[10px] text-[#4B5563] space-y-0.5 list-disc list-inside font-medium">
                 <li>Zero-hallucination valuation defense</li>
                 <li>RERA database attribution on number query</li>
                 <li>Instant non-combative DNC compliance</li>

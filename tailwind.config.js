@@ -8,25 +8,25 @@ export default {
     extend: {
       colors: {
         fortiv: {
-          bg: '#F8FCFF',
-          'bg-subtle': '#F0F7FD',
+          bg: '#F8F9FA',
+          'bg-subtle': '#F4F5F7',
           card: '#FFFFFF',
-          border: '#E2EEF8',
-          'border-light': '#EDF5FB',
-          'text-primary': '#0F172A',
-          'text-secondary': '#475569',
-          'text-muted': '#94A3B8',
-          accent: '#0284C7',          // Electric Ocean Blue
-          'accent-hover': '#0369A1',
-          'accent-light': '#E0F2FE',
-          'accent-subtle': '#F0F9FF',
-          cyan: '#06B6D4',            // Electric Cyan
+          border: '#ECEEF1',
+          'border-light': '#F0F2F5',
+          'text-primary': '#111827',
+          'text-secondary': '#6B7280',
+          'text-muted': '#9CA3AF',
+          accent: '#2563EB',          // Cobalt Blue
+          'accent-hover': '#1D4ED8',
+          'accent-light': '#EFF6FF',
+          'accent-subtle': '#DBEAFE',
+          cyan: '#06B6D4',
           'cyan-hover': '#0891B2',
           'cyan-light': '#ECFEFF',
           'cyan-subtle': '#F0FDFA',
-          'cyan-glow': 'rgba(6, 182, 212, 0.4)',
-          blue: '#0284C7',
-          'blue-light': '#E0F2FE',
+          'cyan-glow': 'rgba(37, 99, 235, 0.25)',
+          blue: '#2563EB',
+          'blue-light': '#EFF6FF',
           sky: '#38BDF8',
           'sky-light': '#F0F9FF',
           success: '#10B981',
@@ -40,17 +40,19 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       boxShadow: {
-        'subtle': '0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02)',
-        'card': '0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02)',
-        'dropdown': '0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04)',
-        'cyan-glow': '0 0 18px rgba(6, 182, 212, 0.35)',
-        'blue-glow': '0 0 18px rgba(2, 132, 199, 0.35)',
+        'subtle': '0 1px 2px rgba(0, 0, 0, 0.03)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02)',
+        'card-hover': '0 4px 20px -2px rgba(0, 0, 0, 0.06)',
+        'dropdown': '0 10px 25px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03)',
+        'blue-glow': '0 0 16px rgba(37, 99, 235, 0.25)',
       },
       borderRadius: {
-        'card': '14px',
+        'card': '16px',
+        '2xl': '16px',
+        '3xl': '20px',
       },
       spacing: {
         '4.5': '1.125rem',

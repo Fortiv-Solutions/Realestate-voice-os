@@ -82,8 +82,38 @@ export interface ExtractedPropertyData {
   qualificationScore: number; // 0 - 100
 }
 
+export interface CustomVariableItem {
+  key: string;
+  label: string;
+  type: 'string' | 'number' | 'boolean' | 'null' | 'array';
+  value: string;
+}
+
+export interface CallDetailsTelemetry {
+  callLatencySec: number;
+  firstUtteranceSec: number;
+  callDurationSec: number;
+  callStartedAtFormatted: string;
+  callEndedAtFormatted: string;
+  fromNumber: string;
+  costInr: number;
+  origin: string;
+  callStatusReason: string;
+  classification: string;
+  customVariables: CustomVariableItem[];
+  keyPoints: string[];
+  actionItems: string[];
+  summaryNarrative: string;
+  sentimentLabel: 'neutral' | 'positive' | 'skeptical' | 'hostile' | 'curious';
+  sentimentReason: string;
+  callbackRequested: boolean;
+  callbackRequestedTime: string | null;
+  callbackRequestedViaHuman: boolean;
+}
+
 export interface CallRecord {
   id: string;
+  callUuid?: string;
   agentId: string;
   agentName: string;
   campaignId?: string;
@@ -105,6 +135,7 @@ export interface CallRecord {
   crmSynced: boolean;
   transcript: TranscriptEntry[];
   extractedData: ExtractedPropertyData;
+  telemetry?: CallDetailsTelemetry;
 }
 
 export interface Lead {

@@ -134,14 +134,14 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-extrabold text-[#0F172A]">AI Intelligence & Knowledge Center</h2>
-          <p className="text-xs text-[#64748B]">Real-time conversational intelligence, automated evaluations, and RAG knowledge playbooks</p>
+          <h2 className="text-xl font-extrabold text-[#111827] tracking-tight">AI Intelligence & Knowledge Center</h2>
+          <p className="text-xs text-[#6B7280] mt-1">Real-time conversational intelligence, automated evaluations, and RAG knowledge playbooks</p>
         </div>
 
         {subTab === 'knowledge_base' && (
           <button
             onClick={() => showToast('Upload Document', 'Knowledge ingestion modal opened.', 'info')}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white text-xs font-bold shadow-md shadow-cyan-500/20 transition-all active:scale-98"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-sm transition-all active:scale-98 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Upload Document</span>
@@ -150,7 +150,7 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
       </div>
 
       {/* Sub-tabs Navigation */}
-      <div className="flex items-center gap-1 p-1 rounded-2xl bg-white border border-[#E2EEF8] shadow-card overflow-x-auto">
+      <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#F4F5F7] border border-[#E5E7EB] shadow-card overflow-x-auto">
         {(
           [
             { id: 'intelligence', label: 'Conversation Intelligence', icon: BrainCircuit },
@@ -164,13 +164,13 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
             <button
               key={t.id}
               onClick={() => setSubTab(t.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                 isActive
-                  ? 'bg-gradient-to-r from-[#0284C7] to-[#06B6D4] text-white shadow-sm shadow-cyan-500/20'
-                  : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F0F7FD]'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#2563EB]' : 'text-[#6B7280]'}`} />
               <span>{t.label}</span>
             </button>
           );
@@ -190,13 +190,13 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
           </div>
 
           {/* Extracted Entity Accuracy Grid */}
-          <div className="p-6 rounded-2xl bg-white border border-[#E2EEF8] shadow-card space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2EEF8]">
+          <div className="p-6 rounded-2xl bg-white border border-[#ECEEF1] shadow-card space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#ECEEF1]">
               <div>
-                <h3 className="text-sm font-extrabold text-[#0F172A]">Extracted Property & Owner Entities</h3>
-                <p className="text-xs text-[#64748B]">Automated CRM entity parsing benchmarks</p>
+                <h3 className="text-sm font-extrabold text-[#111827]">Extracted Property & Owner Entities</h3>
+                <p className="text-xs text-[#6B7280]">Automated CRM entity parsing benchmarks</p>
               </div>
-              <span className="text-xs font-bold text-[#0284C7] bg-[#E0F2FE] px-3 py-1 rounded-full border border-[#BAE6FD]">
+              <span className="text-xs font-bold text-[#2563EB] bg-[#EFF6FF] px-3 py-1 rounded-full border border-[#BFDBFE]">
                 16 / 16 Active Extraction Models
               </span>
             </div>
@@ -205,17 +205,17 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
               {extractedEntities.map((e, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/15 transition-all space-y-2"
+                  className="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#ECEEF1] hover:border-[#CBD5E1] transition-all space-y-2"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#0F172A] leading-tight">{e.name}</span>
-                    <span className="text-[10px] font-bold text-[#0891B2] bg-[#ECFEFF] px-1.5 py-0.5 rounded border border-[#A5F3FC]">
+                    <span className="text-xs font-bold text-[#111827] leading-tight">{e.name}</span>
+                    <span className="text-[10px] font-bold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-full border border-[#BFDBFE]">
                       {e.accuracy}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center text-[10px] text-[#64748B] pt-1 border-t border-[#E2EEF8]">
+                  <div className="flex justify-between items-center text-[10px] text-[#6B7280] pt-1 border-t border-[#ECEEF1]">
                     <span>Status:</span>
-                    <span className="font-bold text-[#0284C7]">{e.status}</span>
+                    <span className="font-bold text-[#10B981]">{e.status}</span>
                   </div>
                 </div>
               ))}
@@ -236,15 +236,15 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
             <MetricCard title="Total Evals Run" value="2,200" change="+18.5%" />
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-[#E2EEF8] shadow-card space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2EEF8]">
+          <div className="p-6 rounded-2xl bg-white border border-[#ECEEF1] shadow-card space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#ECEEF1]">
               <div>
-                <h3 className="text-sm font-extrabold text-[#0F172A]">Automated Model Evaluation Suites</h3>
-                <p className="text-xs text-[#64748B]">Continuous regression testing and zero-hallucination guardrail benchmarks</p>
+                <h3 className="text-sm font-extrabold text-[#111827]">Automated Model Evaluation Suites</h3>
+                <p className="text-xs text-[#6B7280]">Continuous regression testing and zero-hallucination guardrail benchmarks</p>
               </div>
               <button
                 onClick={() => showToast('Test Suite Triggered', 'Running 500 automated conversational scenarios...', 'info')}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#E0F2FE] hover:bg-[#BAE6FD] text-[#0284C7] text-xs font-bold transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#2563EB] text-xs font-bold transition-colors cursor-pointer"
               >
                 <Zap className="w-3.5 h-3.5" />
                 <span>Run Full Eval Suite</span>
@@ -255,23 +255,23 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
               {evalTestSuites.map((suite) => (
                 <div
                   key={suite.id}
-                  className="p-4 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/15 transition-all space-y-3"
+                  className="p-4 rounded-xl bg-[#F8F9FA] border border-[#ECEEF1] hover:border-[#CBD5E1] transition-all space-y-3"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <h4 className="text-xs font-bold text-[#0F172A] leading-snug">{suite.title}</h4>
-                      <span className="text-[10px] text-[#0284C7] font-semibold">{suite.category}</span>
+                      <h4 className="text-xs font-bold text-[#111827] leading-snug">{suite.title}</h4>
+                      <span className="text-[10px] text-[#2563EB] font-semibold">{suite.category}</span>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ECFEFF] text-[#0891B2] border border-[#A5F3FC]">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ECFDF5] text-[#10B981] border border-[#A7F3D0]">
                       {suite.passRate} Pass
                     </span>
                   </div>
 
-                  <p className="text-xs text-[#64748B] leading-relaxed">{suite.description}</p>
+                  <p className="text-xs text-[#6B7280] leading-relaxed">{suite.description}</p>
 
-                  <div className="flex items-center justify-between text-[10px] text-[#64748B] pt-2 border-t border-[#E2EEF8]">
-                    <span>Tests Run: <strong className="text-[#0F172A]">{suite.testsRun}</strong></span>
-                    <span>Avg Turn Latency: <strong className="text-[#0284C7]">{suite.latency}</strong></span>
+                  <div className="flex items-center justify-between text-[10px] text-[#6B7280] pt-2 border-t border-[#ECEEF1]">
+                    <span>Tests Run: <strong className="text-[#111827]">{suite.testsRun}</strong></span>
+                    <span>Avg Turn Latency: <strong className="text-[#2563EB]">{suite.latency}</strong></span>
                     <span className="flex items-center gap-1 text-[#10B981] font-bold">
                       <CheckCircle className="w-3 h-3" />
                       <span>{suite.status}</span>
@@ -289,15 +289,15 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
       {/* ========================================================================= */}
       {subTab === 'knowledge_base' && (
         <div className="space-y-6">
-          <div className="p-3.5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card">
+          <div className="p-3.5 rounded-2xl bg-white border border-[#ECEEF1] shadow-card">
             <div className="relative w-full sm:w-80">
-              <Search className="w-3.5 h-3.5 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-3.5 h-3.5 text-[#9CA3AF] absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search knowledge documents, playbooks & pricing..."
-                className="w-full pl-9 pr-3.5 py-1.5 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full pl-9 pr-3.5 py-1.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               />
             </div>
           </div>
@@ -306,23 +306,23 @@ export const AIIntelligencePage: React.FC<{ initialSubTab?: 'intelligence' | 'ev
             {filteredDocs.map((doc) => (
               <div
                 key={doc.id}
-                className="p-5 rounded-2xl bg-white border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/20 shadow-card transition-all space-y-3"
+                className="p-5 rounded-2xl bg-white border border-[#ECEEF1] hover:border-[#CBD5E1] shadow-card transition-all space-y-3"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center border border-[#BAE6FD] shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center border border-[#BFDBFE] shrink-0">
                       <FileText className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="text-xs font-bold text-[#0F172A] leading-snug">{doc.title}</h3>
-                      <span className="text-[10px] text-[#0284C7] font-semibold">{doc.category}</span>
+                      <h3 className="text-xs font-bold text-[#111827] leading-snug">{doc.title}</h3>
+                      <span className="text-[10px] text-[#2563EB] font-semibold">{doc.category}</span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-xs text-[#64748B] leading-relaxed">{doc.snippet}</p>
+                <p className="text-xs text-[#6B7280] leading-relaxed">{doc.snippet}</p>
 
-                <div className="flex items-center justify-between text-[11px] text-[#94A3B8] pt-2 border-t border-[#E2EEF8]">
+                <div className="flex items-center justify-between text-[11px] text-[#9CA3AF] pt-2 border-t border-[#ECEEF1]">
                   <span>Updated: {doc.updatedAt}</span>
                   <span className="text-[#10B981] font-semibold flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" />

@@ -35,8 +35,8 @@ export const ConversationIntelligencePage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       <div>
-        <h2 className="text-base font-extrabold text-[#0F172A]">Conversation Intelligence & AI Extraction</h2>
-        <p className="text-xs text-[#64748B]">Real-time natural language entity extraction, sentiment detection & safety enforcement</p>
+        <h2 className="text-base font-extrabold text-[#111827]">Conversation Intelligence & AI Extraction</h2>
+        <p className="text-xs text-[#6B7280]">Real-time natural language entity extraction, sentiment detection & safety enforcement</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -47,29 +47,29 @@ export const ConversationIntelligencePage: React.FC = () => {
       </div>
 
       {/* Extracted Entity Accuracy Grid */}
-      <div className="p-6 rounded-2xl bg-white border border-[#E2EEF8] shadow-card space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E2EEF8]">
+      <div className="p-6 rounded-2xl bg-white border border-[#ECEEF1] shadow-card space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[#ECEEF1]">
           <div>
-            <h3 className="text-sm font-extrabold text-[#0F172A]">Extracted Property & Owner Entities</h3>
-            <p className="text-xs text-[#64748B]">Automated CRM entity parsing benchmarks</p>
+            <h3 className="text-sm font-extrabold text-[#111827]">Extracted Property & Owner Entities</h3>
+            <p className="text-xs text-[#6B7280]">Automated CRM entity parsing benchmarks</p>
           </div>
-          <span className="text-xs font-bold text-[#0284C7] bg-[#E0F2FE] px-3 py-1 rounded-full border border-[#BAE6FD]">
+          <span className="text-xs font-bold text-[#2563EB] bg-[#EFF6FF] px-3 py-1 rounded-full border border-[#DBEAFE]">
             16 / 16 Active Extraction Models
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {extractedEntities.map((e, idx) => (
-            <div key={idx} className="p-3.5 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/15 transition-all space-y-2">
+            <div key={idx} className="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#ECEEF1] hover:border-[#CBD5E1] transition-all space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#0F172A] leading-tight">{e.name}</span>
-                <span className="text-[10px] font-bold text-[#0891B2] bg-[#ECFEFF] px-1.5 py-0.5 rounded border border-[#A5F3FC]">
+                <span className="text-xs font-bold text-[#111827] leading-tight">{e.name}</span>
+                <span className="text-[10px] font-bold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-full border border-[#DBEAFE]">
                   {e.accuracy}
                 </span>
               </div>
-              <div className="flex justify-between items-center text-[10px] text-[#64748B] pt-1 border-t border-[#E2EEF8]">
+              <div className="flex justify-between items-center text-[10px] text-[#6B7280] pt-1 border-t border-[#ECEEF1]">
                 <span>Status:</span>
-                <span className="font-bold text-[#0284C7]">{e.status}</span>
+                <span className="font-bold text-[#10B981]">{e.status}</span>
               </div>
             </div>
           ))}

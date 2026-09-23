@@ -38,7 +38,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
     'All leads': {
       data: [420, 510, 480, 620, 710, 680, 740, 810],
       yMarks: [828, 414, 0],
-      color: '#0284C7',
+      color: '#2563EB',
       unit: 'leads',
       total: '19,621',
       avg: '654/day',
@@ -46,7 +46,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
     'WhatsApp': {
       data: [380, 460, 430, 560, 640, 610, 670, 730],
       yMarks: [750, 375, 0],
-      color: '#06B6D4',
+      color: '#38BDF8',
       unit: 'WhatsApp msgs',
       total: '17,600',
       avg: '586/day',
@@ -54,7 +54,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
     'Calls': {
       data: [42, 48, 45, 58, 65, 62, 68, 74],
       yMarks: [80, 40, 0],
-      color: '#0284C7',
+      color: '#2563EB',
       unit: 'phone calls',
       total: '2,000',
       avg: '67/day',
@@ -112,20 +112,20 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
     <div className="space-y-3">
       {/* Dynamic Channels Filter Buttons with Live Animation Indicators */}
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center p-1 rounded-xl bg-[#F0F7FD] border border-[#E2EEF8]">
+        <div className="flex items-center p-1 rounded-xl bg-[#F4F5F7] border border-[#E5E7EB]">
           {(['All leads', 'WhatsApp', 'Calls', 'Email'] as const).map((filter) => (
             <button
               key={filter}
               onClick={() => handleChannelSelect(filter)}
               className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all duration-300 relative ${
                 internalChannel === filter
-                  ? 'bg-white text-[#0284C7] shadow-sm border border-[#BAE6FD]'
-                  : 'text-[#64748B] hover:text-[#0F172A] hover:bg-white/60'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
               <div className="flex items-center gap-1.5">
                 {internalChannel === filter && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4] animate-ping" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                 )}
                 <span>{filter}</span>
               </div>
@@ -133,11 +133,11 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
           ))}
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-[#64748B] font-semibold">
-          <Activity className="w-3.5 h-3.5 text-[#06B6D4] animate-pulse" />
-          <span>Total: <strong className="text-[#0284C7] font-bold">{activeSet.total}</strong></span>
+        <div className="flex items-center gap-2 text-xs text-[#6B7280] font-semibold">
+          <Activity className="w-3.5 h-3.5 text-[#2563EB]" />
+          <span>Total: <strong className="text-[#2563EB] font-bold">{activeSet.total}</strong></span>
           <span>•</span>
-          <span>Avg: <strong className="text-[#0F172A]">{activeSet.avg}</strong></span>
+          <span>Avg: <strong className="text-[#111827]">{activeSet.avg}</strong></span>
         </div>
       </div>
 
@@ -150,17 +150,17 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
         >
           <defs>
             <linearGradient id={`dynLeadGrad_${internalChannel.replace(/\s+/g, '')}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={activeSet.color} stopOpacity="0.28" />
-              <stop offset="60%" stopColor={activeSet.color} stopOpacity="0.08" />
+              <stop offset="0%" stopColor={activeSet.color} stopOpacity="0.18" />
+              <stop offset="60%" stopColor={activeSet.color} stopOpacity="0.04" />
               <stop offset="100%" stopColor={activeSet.color} stopOpacity="0.0" />
             </linearGradient>
 
             <filter id="leadGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={activeSet.color} floodOpacity="0.45" />
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={activeSet.color} floodOpacity="0.3" />
             </filter>
           </defs>
 
-          {/* Background subtle grid lines matching video */}
+          {/* Background subtle grid lines */}
           {activeSet.yMarks.map((val, idx) => {
             const pct = idx / (activeSet.yMarks.length - 1);
             const y = paddingY + pct * chartH;
@@ -171,7 +171,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
                   y1={y}
                   x2={width - paddingX}
                   y2={y}
-                  stroke="#E2EEF8"
+                  stroke="#ECEEF1"
                   strokeDasharray="3 3"
                 />
                 <text
@@ -179,7 +179,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
                   y={y + 3.5}
                   textAnchor="end"
                   fontSize="9.5"
-                  fill="#94A3B8"
+                  fill="#9CA3AF"
                   fontFamily="Inter, sans-serif"
                   fontWeight="500"
                 >
@@ -196,12 +196,12 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
             className="animate-chart-area"
           />
 
-          {/* Dynamic Spline Line with smooth draw-in animation */}
+          {/* Dynamic Spline Line */}
           <path
             d={path}
             fill="none"
             stroke={activeSet.color}
-            strokeWidth="3"
+            strokeWidth="3.2"
             strokeLinecap="round"
             filter="url(#leadGlow)"
             className="animate-chart-draw"
@@ -231,7 +231,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
                 y={height - 2}
                 textAnchor="middle"
                 fontSize="9.5"
-                fill="#64748B"
+                fill="#6B7280"
                 fontFamily="Inter, sans-serif"
                 fontWeight="500"
               >
@@ -254,7 +254,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
             />
           ))}
 
-          {/* Active Hover Highlight & Pulsing Crosshair */}
+          {/* Active Hover Highlight & Guideline */}
           {activePoint && (
             <g>
               <line
@@ -271,8 +271,7 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
                 cy={activePoint.y}
                 r="10"
                 fill={activeSet.color}
-                fillOpacity="0.25"
-                className="animate-ping"
+                fillOpacity="0.2"
               />
               <circle
                 cx={activePoint.x}
@@ -286,24 +285,24 @@ export const DirectLeadsOverTimeChart: React.FC<DirectLeadsChartProps> = ({
           )}
         </svg>
 
-        {/* Animated Floating Glassmorphism Tooltip */}
+        {/* Calina AI Dark Pill Floating Tooltip */}
         {activePoint && (
           <div
-            className="absolute z-20 pointer-events-none px-3 py-2 rounded-xl bg-[#0F172A]/95 backdrop-blur-md text-white text-xs font-semibold shadow-2xl -translate-x-1/2 -translate-y-full transition-all duration-150 border border-[#06B6D4]/40"
+            className="absolute z-20 pointer-events-none px-3 py-1.5 rounded-lg bg-[#18181B] text-white text-xs font-semibold shadow-xl -translate-x-1/2 -translate-y-full transition-all duration-150"
             style={{
               left: `${(activePoint.x / width) * 100}%`,
               top: `${(activePoint.y / height) * 100}%`,
               marginTop: '-12px',
             }}
           >
-            <div className="text-[10px] text-cyan-300 font-normal flex items-center justify-between gap-3 mb-0.5">
+            <div className="text-[10px] text-[#9CA3AF] font-normal flex items-center justify-between gap-3 mb-0.5">
               <span>{activePoint.date}</span>
               <span className="text-[#10B981] font-bold">↑ +18.4%</span>
             </div>
-            <div className="flex items-center gap-1.5 font-bold text-white">
-              <span className="w-2 h-2 rounded-full bg-[#06B6D4] shadow-cyan-glow" />
+            <div className="flex items-center gap-1.5 font-bold text-white text-xs">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
               <span>{internalChannel}:</span>
-              <span className="text-[#38BDF8]">{activePoint.val.toLocaleString()} {activeSet.unit}</span>
+              <span className="text-white">{activePoint.val.toLocaleString()} {activeSet.unit}</span>
             </div>
           </div>
         )}
@@ -359,40 +358,40 @@ export const DirectLeadsDonutChart: React.FC<DirectLeadsDonutProps> = ({
             cy="70"
             r={radius}
             fill="none"
-            stroke="#F0F7FD"
+            stroke="#F4F5F7"
             strokeWidth={strokeWidth}
           />
-          {/* WhatsApp segment (Electric Cyan) */}
+          {/* WhatsApp segment */}
           <circle
             cx="70"
             cy="70"
             r={radius}
             fill="none"
-            stroke="#06B6D4"
+            stroke="#38BDF8"
             strokeWidth={hoveredChannel === 'WhatsApp' ? strokeWidth + 4 : strokeWidth}
             strokeDasharray={`${whatsappStroke} ${circumference}`}
             strokeDashoffset={0}
             strokeLinecap="round"
-            className="transition-all duration-300 cursor-pointer hover:stroke-[#0891B2]"
+            className="transition-all duration-300 cursor-pointer hover:stroke-[#0284C7]"
             onMouseEnter={() => setHoveredChannel('WhatsApp')}
             onMouseLeave={() => setHoveredChannel(null)}
           />
-          {/* Calls segment (Ocean Blue) */}
+          {/* Calls segment */}
           <circle
             cx="70"
             cy="70"
             r={radius}
             fill="none"
-            stroke="#0284C7"
+            stroke="#2563EB"
             strokeWidth={hoveredChannel === 'Calls' ? strokeWidth + 4 : strokeWidth}
             strokeDasharray={`${callsStroke} ${circumference}`}
             strokeDashoffset={callsOffset}
             strokeLinecap="round"
-            className="transition-all duration-300 cursor-pointer hover:stroke-[#0369A1]"
+            className="transition-all duration-300 cursor-pointer hover:stroke-[#1D4ED8]"
             onMouseEnter={() => setHoveredChannel('Calls')}
             onMouseLeave={() => setHoveredChannel(null)}
           />
-          {/* Email segment (Indigo Cyan) */}
+          {/* Email segment */}
           <circle
             cx="70"
             cy="70"
@@ -411,8 +410,8 @@ export const DirectLeadsDonutChart: React.FC<DirectLeadsDonutProps> = ({
 
         {/* Center label with smooth value transition */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-[#64748B]">Total Leads</span>
-          <span className="text-base font-black text-[#0F172A] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#6B7280]">Total Leads</span>
+          <span className="text-base font-black text-[#111827] transition-all duration-200">
             {hoveredChannel
               ? hoveredChannel === 'WhatsApp'
                 ? `${whatsappPct}%`
@@ -421,7 +420,7 @@ export const DirectLeadsDonutChart: React.FC<DirectLeadsDonutProps> = ({
                 : `${emailPct}%`
               : total}
           </span>
-          <span className="text-[9px] font-semibold text-[#0284C7] transition-all duration-200">
+          <span className="text-[9px] font-semibold text-[#2563EB] transition-all duration-200">
             {hoveredChannel || 'All Sources'}
           </span>
         </div>
@@ -433,19 +432,19 @@ export const DirectLeadsDonutChart: React.FC<DirectLeadsDonutProps> = ({
         <div
           className={`p-2 rounded-xl transition-all duration-200 flex items-center justify-between cursor-pointer ${
             hoveredChannel === 'WhatsApp'
-              ? 'bg-[#ECFEFF] border border-[#A5F3FC] translate-x-1 shadow-sm'
-              : 'hover:bg-[#F8FCFF]'
+              ? 'bg-[#EFF6FF] border border-[#BFDBFE] translate-x-1 shadow-xs'
+              : 'hover:bg-[#F8F9FA]'
           }`}
           onMouseEnter={() => setHoveredChannel('WhatsApp')}
           onMouseLeave={() => setHoveredChannel(null)}
         >
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#06B6D4] shadow-sm animate-pulse" />
-            <span className="text-xs font-bold text-[#0F172A]">WhatsApp</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#38BDF8] shadow-xs" />
+            <span className="text-xs font-bold text-[#111827]">WhatsApp</span>
           </div>
           <div className="text-right">
-            <span className="text-xs font-black text-[#0F172A]">{whatsappCount.toLocaleString()}</span>
-            <span className="text-[10px] text-[#64748B] block font-semibold">{whatsappPct}%</span>
+            <span className="text-xs font-black text-[#111827]">{whatsappCount.toLocaleString()}</span>
+            <span className="text-[10px] text-[#6B7280] block font-semibold">{whatsappPct}%</span>
           </div>
         </div>
 
@@ -453,19 +452,19 @@ export const DirectLeadsDonutChart: React.FC<DirectLeadsDonutProps> = ({
         <div
           className={`p-2 rounded-xl transition-all duration-200 flex items-center justify-between cursor-pointer ${
             hoveredChannel === 'Calls'
-              ? 'bg-[#E0F2FE] border border-[#BAE6FD] translate-x-1 shadow-sm'
-              : 'hover:bg-[#F8FCFF]'
+              ? 'bg-[#EFF6FF] border border-[#BFDBFE] translate-x-1 shadow-xs'
+              : 'hover:bg-[#F8F9FA]'
           }`}
           onMouseEnter={() => setHoveredChannel('Calls')}
           onMouseLeave={() => setHoveredChannel(null)}
         >
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#0284C7] shadow-sm animate-pulse" />
-            <span className="text-xs font-bold text-[#0F172A]">Voice Calls</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#2563EB] shadow-xs" />
+            <span className="text-xs font-bold text-[#111827]">Voice Calls</span>
           </div>
           <div className="text-right">
-            <span className="text-xs font-black text-[#0F172A]">{callsCount.toLocaleString()}</span>
-            <span className="text-[10px] text-[#64748B] block font-semibold">{callsPct}%</span>
+            <span className="text-xs font-black text-[#111827]">{callsCount.toLocaleString()}</span>
+            <span className="text-[10px] text-[#6B7280] block font-semibold">{callsPct}%</span>
           </div>
         </div>
 
@@ -473,19 +472,19 @@ export const DirectLeadsDonutChart: React.FC<DirectLeadsDonutProps> = ({
         <div
           className={`p-2 rounded-xl transition-all duration-200 flex items-center justify-between cursor-pointer ${
             hoveredChannel === 'Email'
-              ? 'bg-[#EEF2FF] border border-[#C7D2FE] translate-x-1 shadow-sm'
-              : 'hover:bg-[#F8FCFF]'
+              ? 'bg-[#EFF6FF] border border-[#BFDBFE] translate-x-1 shadow-xs'
+              : 'hover:bg-[#F8F9FA]'
           }`}
           onMouseEnter={() => setHoveredChannel('Email')}
           onMouseLeave={() => setHoveredChannel(null)}
         >
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#6366F1] shadow-sm" />
-            <span className="text-xs font-bold text-[#0F172A]">Email Inquiries</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#6366F1] shadow-xs" />
+            <span className="text-xs font-bold text-[#111827]">Email Inquiries</span>
           </div>
           <div className="text-right">
-            <span className="text-xs font-black text-[#0F172A]">{emailCount}</span>
-            <span className="text-[10px] text-[#64748B] block font-semibold">{emailPct}%</span>
+            <span className="text-xs font-black text-[#111827]">{emailCount}</span>
+            <span className="text-[10px] text-[#6B7280] block font-semibold">{emailPct}%</span>
           </div>
         </div>
       </div>
@@ -511,7 +510,7 @@ export const CallInsightsLineChart: React.FC<{
       data: [48, 62, 58, 70, 75, 52, 68, 80, 64, 78, 55, 82],
       yMarks: [85, 48, 0],
       unit: 'calls',
-      color: '#0284C7',
+      color: '#2563EB',
       maxVal: 85,
       isPercentage: false,
     },
@@ -519,7 +518,7 @@ export const CallInsightsLineChart: React.FC<{
       data: [64, 68, 65, 71, 74, 66, 69, 75, 70, 73, 68, 76],
       yMarks: [100, 50, 0],
       unit: '%',
-      color: '#06B6D4',
+      color: '#38BDF8',
       maxVal: 100,
       isPercentage: true,
     },
@@ -561,15 +560,15 @@ export const CallInsightsLineChart: React.FC<{
     <div className="space-y-3">
       {/* Dynamic Tabs */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center p-1 rounded-xl bg-[#F4F5F7] border border-[#E5E7EB]">
           {(['Total calls', 'Answering rate'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => handleModeChange(tab)}
-              className={`text-xs font-bold pb-1 transition-all duration-300 relative ${
+              className={`px-3 py-1 text-xs font-bold rounded-lg transition-all duration-300 relative ${
                 mode === tab
-                  ? 'text-[#0284C7] border-b-2 border-[#0284C7]'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
               {tab}
@@ -577,7 +576,7 @@ export const CallInsightsLineChart: React.FC<{
           ))}
         </div>
 
-        <span className="text-[11px] font-bold text-[#0891B2] bg-[#ECFEFF] px-2.5 py-0.5 rounded-lg border border-[#A5F3FC] shadow-xs animate-pulse">
+        <span className="text-[11px] font-bold text-[#2563EB] bg-[#EFF6FF] px-2.5 py-0.5 rounded-lg border border-[#BFDBFE] shadow-xs">
           {mode === 'Total calls' ? 'Volume: 2k Total' : 'Avg Rate: 69%'}
         </span>
       </div>
@@ -603,8 +602,8 @@ export const CallInsightsLineChart: React.FC<{
             const y = paddingY + pct * chartH;
             return (
               <g key={idx}>
-                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="#E2EEF8" strokeDasharray="3 3" />
-                <text x={paddingX - 8} y={y + 3.5} textAnchor="end" fontSize="9" fill="#94A3B8" fontFamily="Inter, sans-serif" fontWeight="500">
+                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="#ECEEF1" strokeDasharray="3 3" />
+                <text x={paddingX - 8} y={y + 3.5} textAnchor="end" fontSize="9" fill="#9CA3AF" fontFamily="Inter, sans-serif" fontWeight="500">
                   {val}{activeSet.isPercentage ? '%' : ''}
                 </text>
               </g>
@@ -645,7 +644,7 @@ export const CallInsightsLineChart: React.FC<{
           {dates.map((lbl, idx) => {
             const x = paddingX + (idx / (dates.length - 1)) * chartW;
             return (
-              <text key={idx} x={x} y={136} textAnchor="middle" fontSize="9" fill="#64748B" fontFamily="Inter, sans-serif">
+              <text key={idx} x={x} y={136} textAnchor="middle" fontSize="9" fill="#6B7280" fontFamily="Inter, sans-serif">
                 {lbl}
               </text>
             );
@@ -668,7 +667,7 @@ export const CallInsightsLineChart: React.FC<{
           {activePoint && (
             <g>
               <line x1={activePoint.x} y1={paddingY} x2={activePoint.x} y2={140 - paddingY} stroke={activeSet.color} strokeWidth="1.5" strokeDasharray="2 2" />
-              <circle cx={activePoint.x} cy={activePoint.y} r="8" fill={activeSet.color} fillOpacity="0.25" className="animate-ping" />
+              <circle cx={activePoint.x} cy={activePoint.y} r="8" fill={activeSet.color} fillOpacity="0.25" />
               <circle cx={activePoint.x} cy={activePoint.y} r="5" fill="#FFFFFF" stroke={activeSet.color} strokeWidth="3" />
             </g>
           )}
@@ -676,7 +675,7 @@ export const CallInsightsLineChart: React.FC<{
 
         {activePoint && (
           <div
-            className="absolute z-20 pointer-events-none px-2.5 py-1.5 rounded-xl bg-[#0F172A] text-white text-xs font-bold -translate-x-1/2 -translate-y-full shadow-xl border border-[#06B6D4]/40"
+            className="absolute z-20 pointer-events-none px-2.5 py-1.5 rounded-xl bg-[#18181B] text-white text-xs font-bold -translate-x-1/2 -translate-y-full shadow-xl"
             style={{
               left: `${(activePoint.x / width) * 100}%`,
               top: `${(activePoint.y / 140) * 100}%`,
@@ -707,7 +706,7 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
       data: [520, 580, 560, 620, 680, 640, 710, 750],
       yMarks: [850, 425, 0],
       unit: 'msgs',
-      color: '#06B6D4',
+      color: '#2563EB',
       maxVal: 850,
       minVal: 0,
       format: (v: number) => `${v} msgs`,
@@ -716,7 +715,7 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
       data: [98.2, 98.8, 99.1, 99.0, 99.4, 99.2, 99.5, 99.6],
       yMarks: [100, 98, 96],
       unit: '%',
-      color: '#0284C7',
+      color: '#38BDF8',
       maxVal: 100,
       minVal: 96,
       format: (v: number) => `${v.toFixed(1)}%`,
@@ -768,15 +767,15 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
     <div className="space-y-3">
       {/* Dynamic Tabs */}
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center p-1 rounded-xl bg-[#F4F5F7] border border-[#E5E7EB]">
           {(['WhatsApp leads', 'Response rate', 'Response time'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => handleModeChange(tab)}
-              className={`text-xs font-bold pb-1 transition-all duration-300 relative ${
+              className={`px-3 py-1 text-xs font-bold rounded-lg transition-all duration-300 relative ${
                 mode === tab
-                  ? 'text-[#0284C7] border-b-2 border-[#0284C7]'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
               {tab}
@@ -784,7 +783,7 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
           ))}
         </div>
 
-        <span className="text-[11px] font-bold text-[#0284C7] bg-[#E0F2FE] px-2.5 py-0.5 rounded-lg border border-[#BAE6FD] shadow-xs">
+        <span className="text-[11px] font-bold text-[#2563EB] bg-[#EFF6FF] px-2.5 py-0.5 rounded-lg border border-[#BFDBFE] shadow-xs">
           {mode === 'WhatsApp leads' ? '17.6k Total' : mode === 'Response rate' ? '99% Avg' : '5.6m Fast'}
         </span>
       </div>
@@ -810,8 +809,8 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
             const y = paddingY + pct * chartH;
             return (
               <g key={idx}>
-                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="#E2EEF8" strokeDasharray="3 3" />
-                <text x={paddingX - 8} y={y + 3.5} textAnchor="end" fontSize="9" fill="#94A3B8" fontFamily="Inter, sans-serif" fontWeight="500">
+                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="#ECEEF1" strokeDasharray="3 3" />
+                <text x={paddingX - 8} y={y + 3.5} textAnchor="end" fontSize="9" fill="#9CA3AF" fontFamily="Inter, sans-serif" fontWeight="500">
                   {val}{mode === 'Response rate' ? '%' : mode === 'Response time' ? 'm' : ''}
                 </text>
               </g>
@@ -849,7 +848,7 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
           {dates.map((lbl, idx) => {
             const x = paddingX + (idx / (dates.length - 1)) * chartW;
             return (
-              <text key={idx} x={x} y={141} textAnchor="middle" fontSize="9" fill="#64748B" fontFamily="Inter, sans-serif">
+              <text key={idx} x={x} y={141} textAnchor="middle" fontSize="9" fill="#6B7280" fontFamily="Inter, sans-serif">
                 {lbl}
               </text>
             );
@@ -871,7 +870,7 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
           {activePoint && (
             <g>
               <line x1={activePoint.x} y1={paddingY} x2={activePoint.x} y2={140 - paddingY} stroke={activeSet.color} strokeWidth="1.5" strokeDasharray="2 2" />
-              <circle cx={activePoint.x} cy={activePoint.y} r="8" fill={activeSet.color} fillOpacity="0.25" className="animate-ping" />
+              <circle cx={activePoint.x} cy={activePoint.y} r="8" fill={activeSet.color} fillOpacity="0.25" />
               <circle cx={activePoint.x} cy={activePoint.y} r="5" fill="#FFFFFF" stroke={activeSet.color} strokeWidth="3" />
             </g>
           )}
@@ -879,7 +878,7 @@ export const WhatsAppInsightsLineChart: React.FC = () => {
 
         {activePoint && (
           <div
-            className="absolute z-20 pointer-events-none px-2.5 py-1.5 rounded-xl bg-[#0F172A] text-white text-xs font-bold -translate-x-1/2 -translate-y-full shadow-xl border border-[#06B6D4]/40"
+            className="absolute z-20 pointer-events-none px-2.5 py-1.5 rounded-xl bg-[#18181B] text-white text-xs font-bold -translate-x-1/2 -translate-y-full shadow-xl"
             style={{
               left: `${(activePoint.x / width) * 100}%`,
               top: `${(activePoint.y / 140) * 100}%`,
@@ -930,7 +929,7 @@ export const CallsPerDayChart: React.FC = () => {
             >
               {/* Floating Tooltip */}
               {isHovered && (
-                <div className="absolute -top-7 bg-[#0F172A] text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-xl z-30 whitespace-nowrap border border-[#06B6D4]/40 animate-bounce">
+                <div className="absolute -top-7 bg-[#18181B] text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-xl z-30 whitespace-nowrap">
                   {d.day}: {d.answered} Answered ({Math.round((d.answered / d.total) * 100)}%)
                 </div>
               )}
@@ -938,22 +937,22 @@ export const CallsPerDayChart: React.FC = () => {
               {/* Stacked bar container with staggered grow animation */}
               <div
                 style={{ animationDelay: `${i * 80}ms` }}
-                className="w-full max-w-[28px] h-24 bg-[#F0F7FD] rounded-lg overflow-hidden flex flex-col justify-end p-0.5 group-hover:ring-2 group-hover:ring-[#06B6D4]/60 group-hover:scale-105 transition-all duration-300 animate-bar-grow shadow-xs"
+                className="w-full max-w-[28px] h-24 bg-[#F4F5F7] rounded-lg overflow-hidden flex flex-col justify-end p-0.5 group-hover:ring-2 group-hover:ring-[#2563EB]/40 group-hover:scale-105 transition-all duration-300 animate-bar-grow shadow-xs"
               >
-                {/* Unanswered (light cyan) */}
+                {/* Unanswered */}
                 <div
                   style={{ height: `${unansweredH}%` }}
-                  className="w-full bg-[#BAE6FD] rounded-t-sm transition-all duration-500 group-hover:bg-[#7DD3FC]"
+                  className="w-full bg-[#BFDBFE] rounded-t-sm transition-all duration-500 group-hover:bg-[#93C5FD]"
                 />
-                {/* Answered (electric cyan) */}
+                {/* Answered */}
                 <div
                   style={{ height: `${answeredH}%` }}
-                  className="w-full bg-gradient-to-t from-[#0284C7] to-[#06B6D4] rounded-b-sm transition-all duration-500 group-hover:brightness-110 shadow-sm"
+                  className="w-full bg-[#2563EB] rounded-b-sm transition-all duration-500 group-hover:bg-[#1D4ED8] shadow-xs"
                 />
               </div>
 
               {/* Day Label */}
-              <span className={`text-[10px] font-semibold transition-colors duration-200 ${isHovered ? 'text-[#0284C7] font-bold scale-110' : 'text-[#64748B]'}`}>
+              <span className={`text-[10px] font-semibold transition-colors duration-200 ${isHovered ? 'text-[#2563EB] font-bold scale-110' : 'text-[#6B7280]'}`}>
                 {d.day}
               </span>
             </div>
@@ -1003,26 +1002,26 @@ export const CallsPerHourChart: React.FC = () => {
               onMouseLeave={() => setHoveredHour(null)}
             >
               {isHovered && (
-                <div className="absolute -top-7 bg-[#0F172A] text-white text-[10px] font-bold px-2 py-1 rounded-lg shadow-xl z-30 whitespace-nowrap border border-[#06B6D4]/40 animate-bounce">
+                <div className="absolute -top-7 bg-[#18181B] text-white text-[10px] font-bold px-2 py-1 rounded-lg shadow-xl z-30 whitespace-nowrap">
                   {h.hour}: {h.calls} calls {h.isPeak ? '🔥' : ''}
                 </div>
               )}
 
               <div
                 style={{ animationDelay: `${i * 45}ms` }}
-                className="w-full max-w-[20px] h-24 bg-[#F0F7FD] rounded-lg overflow-hidden flex flex-col justify-end p-0.5 group-hover:ring-2 group-hover:ring-[#06B6D4]/60 group-hover:scale-105 transition-all duration-300 animate-bar-grow"
+                className="w-full max-w-[20px] h-24 bg-[#F4F5F7] rounded-lg overflow-hidden flex flex-col justify-end p-0.5 group-hover:ring-2 group-hover:ring-[#2563EB]/40 group-hover:scale-105 transition-all duration-300 animate-bar-grow"
               >
                 <div
                   style={{ height: `${barHeight}%` }}
                   className={`w-full rounded-md transition-all duration-500 ${
                     h.isPeak
-                      ? 'bg-gradient-to-t from-[#0284C7] to-[#06B6D4] shadow-cyan-glow animate-pulse'
-                      : 'bg-[#BAE6FD] hover:bg-[#7DD3FC]'
+                      ? 'bg-[#2563EB] shadow-xs animate-pulse'
+                      : 'bg-[#BFDBFE] hover:bg-[#93C5FD]'
                   }`}
                 />
               </div>
 
-              <span className={`text-[9px] font-medium transition-colors duration-200 ${h.isPeak ? 'text-[#0284C7] font-bold' : 'text-[#64748B]'}`}>
+              <span className={`text-[9px] font-medium transition-colors duration-200 ${h.isPeak ? 'text-[#2563EB] font-bold' : 'text-[#6B7280]'}`}>
                 {h.hour.replace(' ', '')}
               </span>
             </div>
@@ -1147,7 +1146,7 @@ export const ProfolioListingPerformanceChart: React.FC<{
     <div className="relative select-none space-y-4">
       {/* Top Filter Controls (Daily/Monthly & Metrics) */}
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#F0F7FD] border border-[#E2EEF8]">
+        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#F4F5F7] border border-[#E5E7EB]">
           {(
             [
               { key: 'impressions', label: 'Impressions' },
@@ -1163,13 +1162,13 @@ export const ProfolioListingPerformanceChart: React.FC<{
               }}
               className={`px-3.5 py-1 text-xs font-bold rounded-lg transition-all duration-300 relative ${
                 activeMetric === m.key
-                  ? 'bg-white text-[#0284C7] shadow-sm border border-[#BAE6FD] scale-102'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
               <div className="flex items-center gap-1.5">
                 {activeMetric === m.key && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4] animate-ping" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                 )}
                 <span>{m.label}</span>
               </div>
@@ -1178,7 +1177,7 @@ export const ProfolioListingPerformanceChart: React.FC<{
         </div>
 
         <div className="flex items-center gap-2.5">
-          <div className="flex items-center p-1 rounded-xl bg-[#F0F7FD] border border-[#E2EEF8]">
+          <div className="flex items-center p-1 rounded-xl bg-[#F4F5F7] border border-[#E5E7EB]">
             <button
               onClick={() => {
                 setViewMode('daily');
@@ -1187,11 +1186,11 @@ export const ProfolioListingPerformanceChart: React.FC<{
               }}
               className={`px-3 py-1 text-xs font-bold rounded-lg transition-all duration-300 ${
                 viewMode === 'daily'
-                  ? 'bg-white text-[#0284C7] shadow-sm'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
-              Daily
+              Weekly
             </button>
             <button
               onClick={() => {
@@ -1201,8 +1200,8 @@ export const ProfolioListingPerformanceChart: React.FC<{
               }}
               className={`px-3 py-1 text-xs font-bold rounded-lg transition-all duration-300 ${
                 viewMode === 'monthly'
-                  ? 'bg-white text-[#0284C7] shadow-sm'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-white text-[#111827] shadow-xs'
+                  : 'text-[#6B7280] hover:text-[#111827]'
               }`}
             >
               Monthly
@@ -1213,12 +1212,12 @@ export const ProfolioListingPerformanceChart: React.FC<{
             onClick={() => setIsLiveAnimating(!isLiveAnimating)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-300 border ${
               isLiveAnimating
-                ? 'bg-[#ECFEFF] border-[#06B6D4] text-[#0891B2] shadow-cyan-glow animate-pulse scale-102'
-                : 'bg-white border-[#E2EEF8] text-[#64748B] hover:text-[#0284C7]'
+                ? 'bg-[#EFF6FF] border-[#2563EB] text-[#2563EB] shadow-sm'
+                : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:text-[#2563EB]'
             }`}
           >
-            {isLiveAnimating ? <Pause className="w-3.5 h-3.5 fill-current text-[#06B6D4]" /> : <Play className="w-3.5 h-3.5 fill-current text-[#0284C7]" />}
-            <span>{isLiveAnimating ? 'Live Telemetry Active' : 'Simulate Live Stream'}</span>
+            {isLiveAnimating ? <Pause className="w-3.5 h-3.5 fill-current text-[#2563EB]" /> : <Play className="w-3.5 h-3.5 fill-current text-[#2563EB]" />}
+            <span>{isLiveAnimating ? 'Live Active' : 'Simulate Stream'}</span>
           </button>
         </div>
       </div>
@@ -1232,13 +1231,13 @@ export const ProfolioListingPerformanceChart: React.FC<{
         >
           <defs>
             <linearGradient id="cyanBlueGradProfolio" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.36" />
-              <stop offset="60%" stopColor="#0284C7" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="#0284C7" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.18" />
+              <stop offset="60%" stopColor="#2563EB" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.0" />
             </linearGradient>
 
             <filter id="profolioGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="4.5" floodColor="#06B6D4" floodOpacity="0.55" />
+              <feDropShadow dx="0" dy="2" stdDeviation="3.5" floodColor="#2563EB" floodOpacity="0.3" />
             </filter>
           </defs>
 
@@ -1248,8 +1247,8 @@ export const ProfolioListingPerformanceChart: React.FC<{
             const y = paddingY + pct * chartH;
             return (
               <g key={idx}>
-                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="#E2EEF8" strokeDasharray={idx === 3 ? '' : '3 3'} strokeWidth="1" />
-                <text x={paddingX - 10} y={y + 3.5} textAnchor="end" fontSize="10" fill="#94A3B8" fontFamily="Inter, sans-serif" fontWeight="500">
+                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="#ECEEF1" strokeDasharray={idx === 3 ? '' : '3 3'} strokeWidth="1" />
+                <text x={paddingX - 10} y={y + 3.5} textAnchor="end" fontSize="10" fill="#9CA3AF" fontFamily="Inter, sans-serif" fontWeight="500">
                   {val >= 1000000 ? `${(val / 1000000).toFixed(1)}M` : val.toLocaleString()}
                 </text>
               </g>
@@ -1259,12 +1258,12 @@ export const ProfolioListingPerformanceChart: React.FC<{
           {/* Shaded Area with Fade In */}
           <path d={areaPath} fill="url(#cyanBlueGradProfolio)" className="animate-chart-area" />
 
-          {/* Dynamic Glowing Spline Line with smooth animation */}
+          {/* Dynamic Spline Line with smooth animation */}
           <path
             d={linePath}
             fill="none"
-            stroke="#00A3FF"
-            strokeWidth="3.25"
+            stroke="#2563EB"
+            strokeWidth="3.5"
             strokeLinecap="round"
             filter="url(#profolioGlow)"
             className="animate-chart-draw"
@@ -1278,7 +1277,7 @@ export const ProfolioListingPerformanceChart: React.FC<{
               cy={pt.y}
               r="3.5"
               fill="#FFFFFF"
-              stroke="#0284C7"
+              stroke="#2563EB"
               strokeWidth="2"
               className="transition-all duration-300 hover:scale-150"
             />
@@ -1286,7 +1285,7 @@ export const ProfolioListingPerformanceChart: React.FC<{
 
           {/* X Axis Dates */}
           {points.map((pt, i) => (
-            <text key={i} x={pt.x} y={height - 6} textAnchor="middle" fontSize="9.5" fill="#64748B" fontFamily="Inter, sans-serif" fontWeight="500">
+            <text key={i} x={pt.x} y={height - 6} textAnchor="middle" fontSize="9.5" fill="#6B7280" fontFamily="Inter, sans-serif" fontWeight="500">
               {pt.date}
             </text>
           ))}
@@ -1308,31 +1307,31 @@ export const ProfolioListingPerformanceChart: React.FC<{
           {/* Active Hover Dot & Guideline */}
           {activePoint && (
             <g>
-              <line x1={activePoint.x} y1={paddingY} x2={activePoint.x} y2={height - paddingY} stroke="#06B6D4" strokeWidth="1.5" strokeDasharray="3 3" />
-              <circle cx={activePoint.x} cy={activePoint.y} r="12" fill="#06B6D4" fillOpacity="0.3" className="animate-ping" />
-              <circle cx={activePoint.x} cy={activePoint.y} r="6.5" fill="#FFFFFF" stroke="#0284C7" strokeWidth="4" />
+              <line x1={activePoint.x} y1={paddingY} x2={activePoint.x} y2={height - paddingY} stroke="#2563EB" strokeWidth="1.5" strokeDasharray="3 3" />
+              <circle cx={activePoint.x} cy={activePoint.y} r="10" fill="#2563EB" fillOpacity="0.2" />
+              <circle cx={activePoint.x} cy={activePoint.y} r="6.5" fill="#FFFFFF" stroke="#2563EB" strokeWidth="4" />
             </g>
           )}
         </svg>
 
-        {/* Floating Glassmorphic Tooltip */}
+        {/* Floating Calina AI Dark Tooltip */}
         {activePoint && (
           <div
-            className="absolute z-20 pointer-events-none px-3.5 py-2.5 rounded-xl bg-[#0F172A]/95 backdrop-blur-md text-white text-xs font-semibold shadow-2xl -translate-x-1/2 -translate-y-full transition-all duration-150 border border-[#06B6D4]/40"
+            className="absolute z-20 pointer-events-none px-3.5 py-2 rounded-lg bg-[#18181B] text-white text-xs font-semibold shadow-2xl -translate-x-1/2 -translate-y-full transition-all duration-150"
             style={{
               left: `${(activePoint.x / width) * 100}%`,
               top: `${(activePoint.y / height) * 100}%`,
               marginTop: '-14px',
             }}
           >
-            <div className="text-[10px] text-cyan-300 font-normal flex items-center justify-between gap-3 mb-1">
+            <div className="text-[10px] text-[#9CA3AF] font-normal flex items-center justify-between gap-3 mb-0.5">
               <span>{activePoint.date} ({viewMode})</span>
               <span className="text-[#10B981] font-bold">↑ +14.2%</span>
             </div>
-            <div className="flex items-center gap-2 text-white">
-              <span className="w-2 h-2 rounded-full bg-[#06B6D4] shadow-cyan-glow animate-pulse" />
+            <div className="flex items-center gap-2 text-white font-bold">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
               <span className="capitalize">{activeMetric}:</span>
-              <span className="font-bold text-[#38BDF8]">{activePoint.val.toLocaleString()}</span>
+              <span className="text-white">{activePoint.val.toLocaleString()}</span>
             </div>
           </div>
         )}
@@ -1341,6 +1340,305 @@ export const ProfolioListingPerformanceChart: React.FC<{
   );
 };
 
+// =========================================================================
+// 8. CALINA AI PERFORMANCE OVERVIEW SPLINE CHART (Results vs Goal)
+// =========================================================================
+
+export const CalinaPerformanceOverviewChart: React.FC<{
+  height?: number;
+}> = ({ height = 165 }) => {
+  const [viewMode, setViewMode] = useState<'Weekly' | 'Monthly'>('Weekly');
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  const weeklyDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const weeklyData = [
+    { label: 'Sun', val: 780, date: '08 Feb 2025' },
+    { label: 'Mon', val: 620, date: '09 Feb 2025' },
+    { label: 'Tue', val: 1278, date: '10 Feb 2025' },
+    { label: 'Wed', val: 950, date: '11 Feb 2025' },
+    { label: 'Thu', val: 1120, date: '12 Feb 2025' },
+    { label: 'Fri', val: 890, date: '13 Feb 2025' },
+    { label: 'Sat', val: 1040, date: '14 Feb 2025' },
+  ];
+
+  const monthlyData = [
+    { label: 'Jan', val: 4200, date: 'Jan 2025' },
+    { label: 'Feb', val: 5100, date: 'Feb 2025' },
+    { label: 'Mar', val: 6800, date: 'Mar 2025' },
+    { label: 'Apr', val: 6200, date: 'Apr 2025' },
+    { label: 'May', val: 7900, date: 'May 2025' },
+    { label: 'Jun', val: 8400, date: 'Jun 2025' },
+    { label: 'Jul', val: 9200, date: 'Jul 2025' },
+  ];
+
+  const currentData = viewMode === 'Weekly' ? weeklyData : monthlyData;
+  const maxVal = Math.max(...currentData.map((d) => d.val)) * 1.25;
+
+  const width = 620;
+  const paddingX = 35;
+  const paddingY = 22;
+  const chartW = width - paddingX * 2;
+  const chartH = height - paddingY * 2;
+
+  const points = currentData.map((d, i) => {
+    const x = paddingX + (i / (currentData.length - 1)) * chartW;
+    const y = height - paddingY - (d.val / maxVal) * chartH;
+    return { x, y, ...d };
+  });
+
+  // Generate smooth spline
+  let path = `M ${points[0].x} ${points[0].y}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i === 0 ? 0 : i - 1];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[i + 2] || p2;
+
+    const cp1x = p1.x + (p2.x - p0.x) / 6;
+    const cp1y = p1.y + (p2.y - p0.y) / 6;
+    const cp2x = p2.x - (p3.x - p1.x) / 6;
+    const cp2y = p2.y - (p3.y - p1.y) / 6;
+
+    path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+  }
+
+  const areaPath = `${path} L ${points[points.length - 1].x} ${height - paddingY} L ${points[0].x} ${height - paddingY} Z`;
+  const activePoint = hoveredIdx !== null ? points[hoveredIdx] : null;
+
+  return (
+    <div className="space-y-3" onMouseLeave={() => setHoveredIdx(null)}>
+      {/* Top Header Row */}
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+        <div>
+          <div className="flex items-center gap-1.5 text-[11px] text-[#6B7280] font-medium mb-0.5">
+            <TrendingUp className="w-3.5 h-3.5 text-[#6B7280]" />
+            <span>Results vs Goal</span>
+          </div>
+          <h3 className="text-sm font-extrabold text-[#111827] tracking-tight">Performance Overview</h3>
+          <p className="text-[11px] text-[#6B7280]">Monthly break down for the current year</p>
+        </div>
+
+        {/* Weekly / Monthly Toggle */}
+        <div className="flex items-center p-0.5 rounded-lg bg-[#F4F5F7] border border-[#E5E7EB] self-start">
+          <button
+            onClick={() => {
+              setViewMode('Weekly');
+              setHoveredIdx(null);
+            }}
+            className={`px-2.5 py-0.5 text-[11px] font-bold rounded-md transition-all ${
+              viewMode === 'Weekly' ? 'bg-white text-[#111827] shadow-xs' : 'text-[#6B7280] hover:text-[#111827]'
+            }`}
+          >
+            Weekly
+          </button>
+          <button
+            onClick={() => {
+              setViewMode('Monthly');
+              setHoveredIdx(null);
+            }}
+            className={`px-2.5 py-0.5 text-[11px] font-bold rounded-md transition-all ${
+              viewMode === 'Monthly' ? 'bg-white text-[#111827] shadow-xs' : 'text-[#6B7280] hover:text-[#111827]'
+            }`}
+          >
+            Monthly
+          </button>
+        </div>
+      </div>
+
+      {/* SVG Chart Area */}
+      <div className="relative pt-1">
+        <svg
+          viewBox={`0 0 ${width} ${height}`}
+          className="w-full h-auto overflow-visible select-none"
+          onMouseLeave={() => setHoveredIdx(null)}
+        >
+          <defs>
+            <linearGradient id="calinaPerformanceGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.16" />
+              <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.03" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.0" />
+            </linearGradient>
+
+            <filter id="calinaGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="#2563EB" floodOpacity="0.28" />
+            </filter>
+          </defs>
+
+          {/* Subtle Grid line */}
+          <line x1={paddingX} y1={height - paddingY} x2={width - paddingX} y2={height - paddingY} stroke="#ECEEF1" strokeWidth="1" />
+
+          {/* Area */}
+          <path d={areaPath} fill="url(#calinaPerformanceGrad)" className="animate-chart-area" />
+
+          {/* Spline Line */}
+          <path
+            d={path}
+            fill="none"
+            stroke="#2563EB"
+            strokeWidth="3"
+            strokeLinecap="round"
+            filter="url(#calinaGlow)"
+            className="animate-chart-draw"
+          />
+
+          {/* Active Highlight Node on Line */}
+          {activePoint && (
+            <g>
+              <circle cx={activePoint.x} cy={activePoint.y} r="10" fill="#2563EB" fillOpacity="0.18" />
+              <circle cx={activePoint.x} cy={activePoint.y} r="5.5" fill="#2563EB" stroke="#FFFFFF" strokeWidth="2.5" />
+            </g>
+          )}
+
+          {/* X Axis Labels */}
+          {points.map((pt, i) => (
+            <text
+              key={i}
+              x={pt.x}
+              y={height - 6}
+              textAnchor="middle"
+              fontSize="9.5"
+              fill={activePoint?.label === pt.label ? '#111827' : '#9CA3AF'}
+              fontFamily="Inter, sans-serif"
+              fontWeight={activePoint?.label === pt.label ? '700' : '500'}
+            >
+              {pt.label}
+            </text>
+          ))}
+
+          {/* Hitboxes for hover */}
+          {points.map((pt, i) => (
+            <rect
+              key={i}
+              x={pt.x - chartW / (points.length * 2)}
+              y={0}
+              width={chartW / points.length}
+              height={height}
+              fill="transparent"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredIdx(i)}
+            />
+          ))}
+        </svg>
+
+        {/* Floating Calina Dark Pill Tooltip */}
+        {activePoint && (
+          <div
+            className="absolute z-20 pointer-events-none px-2.5 py-1 rounded-lg bg-[#18181B] text-white shadow-xl -translate-x-1/2 -translate-y-full transition-all duration-150"
+            style={{
+              left: `${(activePoint.x / width) * 100}%`,
+              top: `${(activePoint.y / height) * 100}%`,
+              marginTop: '-10px',
+            }}
+          >
+            <div className="text-[9px] text-[#9CA3AF] font-normal">{activePoint.date}</div>
+            <div className="text-[11px] font-bold text-white tracking-wide">{activePoint.val.toLocaleString()}</div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// =========================================================================
+// 9. CALINA AI PEAK CALLING HOURS HISTOGRAM (Vertical Capsule Pill Bars)
+// =========================================================================
+
+export const CalinaPeakCallingHoursChart: React.FC = () => {
+  const [hoveredSlot, setHoveredSlot] = useState<string | null>(null);
+  const yAxisVolume = ['400', '300', '200', '100', '0'];
+
+  const slotsData = [
+    { slot: '9-11 AM', heightPct: 58, calls: 232, active: false, label: 'Morning' },
+    { slot: '11-1 PM', heightPct: 95, calls: 382, active: true, label: 'Peak Midday' },
+    { slot: '1-3 PM', heightPct: 68, calls: 272, active: false, label: 'Afternoon' },
+    { slot: '3-5 PM', heightPct: 82, calls: 328, active: false, label: 'Late Afternoon' },
+    { slot: '5-7 PM', heightPct: 45, calls: 180, active: false, label: 'Evening' },
+  ];
+
+  return (
+    <div className="h-full flex flex-col justify-between space-y-3 select-none">
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="text-sm font-extrabold text-[#111827] tracking-tight">Peak calling hours</h3>
+          <p className="text-[11px] text-[#6B7280]">Call traffic across operating windows</p>
+        </div>
+        <span className="text-[10px] font-bold text-[#2563EB] bg-[#EFF6FF] px-2 py-0.5 rounded-full border border-[#DBEAFE]">
+          Peak: 11 AM – 4 PM
+        </span>
+      </div>
+
+      <div className="flex-1 flex gap-2.5 pt-5 items-stretch min-h-[145px]">
+        {/* Y Axis Volume */}
+        <div className="flex flex-col justify-between pb-5 pt-0.5 text-right text-[10px] font-medium text-[#9CA3AF] shrink-0 select-none">
+          {yAxisVolume.map((vol) => (
+            <span key={vol} className="leading-none">{vol}</span>
+          ))}
+        </div>
+
+        {/* Vertical Capsule Bars */}
+        <div className="flex-1 flex items-stretch justify-around gap-2 pb-1">
+          {slotsData.map((item) => {
+            const currentActiveSlot = hoveredSlot || '11-1 PM';
+            const isHovered = hoveredSlot === item.slot;
+            const isBlue = item.slot === currentActiveSlot;
+
+            return (
+              <div
+                key={item.slot}
+                className="flex flex-col items-center justify-between gap-1.5 h-full flex-1 max-w-[48px] group cursor-pointer relative"
+                onMouseEnter={() => setHoveredSlot(item.slot)}
+                onMouseLeave={() => setHoveredSlot(null)}
+              >
+                {/* Tooltip on hover with Peak label & arrow pointer */}
+                {isHovered && (
+                  <div className="absolute -top-7 z-30 pointer-events-none px-2 py-1 rounded-md bg-[#18181B] text-white text-[9px] font-bold shadow-xl whitespace-nowrap -translate-x-1/2 left-1/2 transition-all flex items-center gap-1">
+                    <span>{item.slot}: {item.calls} calls</span>
+                    {item.active && (
+                      <span className="text-[#60A5FA] font-extrabold flex items-center gap-0.5">
+                        <span>🔥</span>
+                        <span>Peak</span>
+                      </span>
+                    )}
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#18181B] rotate-45" />
+                  </div>
+                )}
+
+                {/* Wide Rounded Capsule Pill Container */}
+                <div
+                  className={`w-full flex-1 rounded-xl flex flex-col justify-end p-0.5 transition-all duration-300 overflow-hidden ${
+                    isBlue
+                      ? 'bg-[#EFF6FF] ring-2 ring-[#93C5FD] scale-102'
+                      : 'bg-[#F4F5F7] group-hover:bg-[#ECEEF2]'
+                  }`}
+                >
+                  <div
+                    style={{ height: `${item.heightPct}%` }}
+                    className={`w-full rounded-lg transition-all duration-300 ${
+                      isBlue
+                        ? 'bg-gradient-to-t from-[#2563EB] to-[#3B82F6] shadow-sm'
+                        : 'bg-[#E5E7EB] group-hover:bg-[#CBD5E1]'
+                    }`}
+                  />
+                </div>
+
+                {/* Hour time slot label */}
+                <span
+                  className={`text-[10px] font-semibold transition-colors text-center whitespace-nowrap ${
+                    isBlue ? 'text-[#111827] font-bold' : 'text-[#6B7280] group-hover:text-[#111827]'
+                  }`}
+                >
+                  {item.slot}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Backwards compatibility export
 export const MainAnalyticsChart = ProfolioListingPerformanceChart;
 export const PurpleLineChart = DirectLeadsOverTimeChart;
+

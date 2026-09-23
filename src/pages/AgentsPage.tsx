@@ -40,22 +40,22 @@ export const AgentsPage: React.FC = () => {
       {/* Header & Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-extrabold text-[#0F172A]">AI Agents</h2>
-          <p className="text-xs text-[#64748B]">Manage and fine-tune your real-estate AI voice consultants</p>
+          <h2 className="text-xl font-extrabold text-[#111827] tracking-tight">AI Voice Agents</h2>
+          <p className="text-xs text-[#6B7280] mt-1">Manage and fine-tune your real-estate AI voice consultants</p>
         </div>
 
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => openTestCallModal()}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#ECFEFF] hover:bg-[#CFFAFE] text-[#0891B2] text-xs font-bold border border-[#A5F3FC] transition-colors shadow-xs"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#2563EB] text-xs font-bold border border-[#BFDBFE] transition-colors shadow-xs"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#06B6D4]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
             <span>Test Playground</span>
           </button>
 
           <button
             onClick={() => navigate('/agents/new')}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white text-xs font-bold shadow-md shadow-cyan-500/20 transition-all active:scale-98"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-sm transition-all active:scale-98"
           >
             <Plus className="w-4 h-4" />
             <span>Create Agent</span>
@@ -64,13 +64,13 @@ export const AgentsPage: React.FC = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-3.5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="p-3.5 rounded-2xl bg-white border border-[#ECEEF1] shadow-card flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <span className="text-xs font-bold text-[#64748B] whitespace-nowrap">Channels:</span>
+          <span className="text-xs font-bold text-[#6B7280] whitespace-nowrap">Channels:</span>
           <select
             value={channelFilter}
             onChange={(e) => setChannelFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-semibold text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+            className="px-3 py-1.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-semibold text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
           >
             <option value="All">All Channels</option>
             <option value="Voice">Voice Only</option>
@@ -80,13 +80,13 @@ export const AgentsPage: React.FC = () => {
         </div>
 
         <div className="relative w-full sm:w-72">
-          <Search className="w-3.5 h-3.5 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-[#9CA3AF] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by agent name, role or ID..."
-            className="w-full pl-9 pr-3.5 py-1.5 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+            className="w-full pl-9 pr-3.5 py-1.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
           />
         </div>
       </div>
@@ -96,20 +96,20 @@ export const AgentsPage: React.FC = () => {
         {filteredAgents.map((agent) => (
           <div
             key={agent.id}
-            className="p-5 rounded-2xl bg-white border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/20 shadow-card transition-all flex flex-col justify-between group space-y-4"
+            className="p-5 rounded-2xl bg-white border border-[#ECEEF1] hover:border-[#CBD5E1] hover:shadow-card-hover shadow-card transition-all flex flex-col justify-between group space-y-4"
           >
             {/* Card Header */}
             <div>
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E0F2FE] to-[#ECFEFF] text-[#0284C7] flex items-center justify-center border border-[#BAE6FD] shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center border border-[#DBEAFE] shadow-xs">
                     <Bot className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-[#0F172A] group-hover:text-[#0284C7] transition-colors">
+                    <h3 className="text-xs font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors">
                       {agent.name}
                     </h3>
-                    <div className="text-[11px] text-[#64748B] font-medium flex items-center gap-1.5 mt-0.5">
+                    <div className="text-[11px] text-[#6B7280] font-medium flex items-center gap-1.5 mt-0.5">
                       <span>{agent.channel}</span>
                       <span>•</span>
                       <span>{agent.type}</span>
@@ -120,38 +120,38 @@ export const AgentsPage: React.FC = () => {
                 <StatusBadge status={agent.status} size="sm" />
               </div>
 
-              <p className="text-xs text-[#64748B] line-clamp-2 mt-2 leading-relaxed">{agent.role}</p>
+              <p className="text-xs text-[#6B7280] line-clamp-2 mt-2 leading-relaxed">{agent.role}</p>
             </div>
 
             {/* Voice & Specs */}
-            <div className="p-3 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] space-y-1.5 text-xs">
+            <div className="p-3 rounded-xl bg-[#F8F9FA] border border-[#ECEEF1] space-y-1.5 text-xs">
               <div className="flex justify-between">
-                <span className="text-[#64748B]">Voice Profile:</span>
-                <span className="font-bold text-[#0F172A] truncate max-w-[150px]">{agent.voiceName}</span>
+                <span className="text-[#6B7280]">Voice Profile:</span>
+                <span className="font-bold text-[#111827] truncate max-w-[150px]">{agent.voiceName}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#64748B]">Accent / Provider:</span>
-                <span className="font-semibold text-[#0284C7]">{agent.voiceAccent} ({agent.voiceProvider})</span>
+                <span className="text-[#6B7280]">Accent / Provider:</span>
+                <span className="font-semibold text-[#2563EB]">{agent.voiceAccent} ({agent.voiceProvider})</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#64748B]">Languages:</span>
-                <span className="font-medium text-[#0F172A]">{agent.languages.join(' • ')}</span>
+                <span className="text-[#6B7280]">Languages:</span>
+                <span className="font-medium text-[#111827]">{agent.languages.join(' • ')}</span>
               </div>
             </div>
 
             {/* Performance Metrics */}
-            <div className="grid grid-cols-3 gap-2 text-center text-xs pt-2 border-t border-[#E2EEF8]">
+            <div className="grid grid-cols-3 gap-2 text-center text-xs pt-2 border-t border-[#F0F2F5]">
               <div>
-                <span className="text-[10px] text-[#64748B] font-semibold block">Calls Today</span>
-                <span className="font-extrabold text-[#0F172A]">{agent.metrics.callsToday}</span>
+                <span className="text-[10px] text-[#6B7280] font-semibold block">Calls Today</span>
+                <span className="font-extrabold text-[#111827]">{agent.metrics.callsToday}</span>
               </div>
               <div>
-                <span className="text-[10px] text-[#64748B] font-semibold block">Answer Rate</span>
-                <span className="font-extrabold text-[#0284C7]">{agent.metrics.answerRate}%</span>
+                <span className="text-[10px] text-[#6B7280] font-semibold block">Answer Rate</span>
+                <span className="font-extrabold text-[#2563EB]">{agent.metrics.answerRate}%</span>
               </div>
               <div>
-                <span className="text-[10px] text-[#64748B] font-semibold block">Qualified</span>
-                <span className="font-extrabold text-[#06B6D4]">{agent.metrics.qualifiedLeads}</span>
+                <span className="text-[10px] text-[#6B7280] font-semibold block">Qualified</span>
+                <span className="font-extrabold text-[#10B981]">{agent.metrics.qualifiedLeads}</span>
               </div>
             </div>
 
@@ -159,7 +159,7 @@ export const AgentsPage: React.FC = () => {
             <div className="flex items-center gap-2 pt-1">
               <button
                 onClick={() => navigate(`/agents/${agent.id}`)}
-                className="flex-1 py-2 px-3 rounded-xl bg-[#F0F7FD] hover:bg-[#E0F2FE] border border-[#E2EEF8] text-xs font-bold text-[#0F172A] hover:text-[#0284C7] transition-colors flex items-center justify-center gap-1.5"
+                className="flex-1 py-2 px-3 rounded-xl bg-[#F8F9FA] hover:bg-[#F3F4F6] border border-[#E5E7EB] text-xs font-bold text-[#111827] hover:text-[#2563EB] transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>View Agent</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -167,7 +167,7 @@ export const AgentsPage: React.FC = () => {
 
               <button
                 onClick={() => openTestCallModal(agent.id)}
-                className="p-2.5 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white shadow-xs transition-all active:scale-95"
+                className="p-2.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-xs transition-all active:scale-95"
                 title="Launch Live Test Call"
               >
                 <Phone className="w-3.5 h-3.5 fill-white" />

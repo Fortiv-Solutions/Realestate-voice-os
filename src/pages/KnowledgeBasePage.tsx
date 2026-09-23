@@ -41,50 +41,50 @@ export const KnowledgeBasePage: React.FC = () => {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-extrabold text-[#0F172A]">AI Knowledge Base & Guidelines</h2>
-          <p className="text-xs text-[#64748B]">Market documents, pricing registries and objection handling guidelines for AI voice models</p>
+          <h2 className="text-base font-extrabold text-[#111827]">AI Knowledge Base & Guidelines</h2>
+          <p className="text-xs text-[#6B7280]">Market documents, pricing registries and objection handling guidelines for AI voice models</p>
         </div>
 
         <button
           onClick={() => showToast('Upload Document', 'Knowledge ingestion modal opened.', 'info')}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white text-xs font-bold shadow-md shadow-cyan-500/20 transition-all active:scale-98"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-xs transition-all active:scale-98"
         >
           <Plus className="w-4 h-4" />
           <span>Upload Document</span>
         </button>
       </div>
 
-      <div className="p-3.5 rounded-2xl bg-white border border-[#E2EEF8] shadow-card">
+      <div className="p-3.5 rounded-2xl bg-white border border-[#ECEEF1] shadow-xs">
         <div className="relative w-full sm:w-80">
-          <Search className="w-3.5 h-3.5 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-[#9CA3AF] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search knowledge documents..."
-            className="w-full pl-9 pr-3.5 py-1.5 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+            className="w-full pl-9 pr-3.5 py-1.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {documents.map((doc) => (
-          <div key={doc.id} className="p-5 rounded-2xl bg-white border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/20 shadow-card transition-all space-y-3">
+          <div key={doc.id} className="p-5 rounded-2xl bg-white border border-[#ECEEF1] hover:border-[#BFDBFE] hover:shadow-subtle shadow-xs transition-all space-y-3">
             <div className="flex items-start justify-between gap-2">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center border border-[#BAE6FD]">
+                <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center border border-[#BFDBFE]">
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold text-[#0F172A] leading-snug">{doc.title}</h3>
-                  <span className="text-[10px] text-[#0284C7] font-semibold">{doc.category}</span>
+                  <h3 className="text-xs font-bold text-[#111827] leading-snug">{doc.title}</h3>
+                  <span className="text-[10px] text-[#2563EB] font-semibold">{doc.category}</span>
                 </div>
               </div>
             </div>
 
-            <p className="text-xs text-[#64748B] leading-relaxed">{doc.snippet}</p>
+            <p className="text-xs text-[#6B7280] leading-relaxed">{doc.snippet}</p>
 
-            <div className="flex items-center justify-between text-[11px] text-[#94A3B8] pt-2 border-t border-[#E2EEF8]">
+            <div className="flex items-center justify-between text-[11px] text-[#9CA3AF] pt-2 border-t border-[#ECEEF1]">
               <span>Updated: {doc.updatedAt}</span>
               <span className="text-[#10B981] font-semibold flex items-center gap-1">
                 <CheckCircle2 className="w-3 h-3" />

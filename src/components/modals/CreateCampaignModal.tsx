@@ -45,21 +45,21 @@ export const CreateCampaignModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in-50">
-      <div className="w-full max-w-lg bg-white rounded-2xl border border-[#E2EEF8] shadow-2xl overflow-hidden animate-in zoom-in-95">
-        <div className="px-6 py-4 bg-[#F8FCFF] border-b border-[#E2EEF8] flex items-center justify-between">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in-50">
+      <div className="w-full max-w-lg bg-white rounded-2xl border border-[#ECEEF1] shadow-dropdown overflow-hidden animate-in zoom-in-95">
+        <div className="px-6 py-4 bg-[#F8F9FA] border-b border-[#ECEEF1] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#06B6D4] to-[#0284C7] text-white flex items-center justify-center shadow-xs">
+            <div className="w-8 h-8 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-xs">
               <Megaphone className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm font-extrabold text-[#0F172A]">Create Outbound Campaign</h3>
-              <p className="text-xs text-[#64748B]">Launch automated AI calling on selected property owners</p>
+              <h3 className="text-sm font-extrabold text-[#111827]">Create Outbound Campaign</h3>
+              <p className="text-xs text-[#6B7280]">Launch automated AI calling on selected property owners</p>
             </div>
           </div>
           <button
             onClick={closeCreateCampaignModal}
-            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#0F172A] hover:bg-[#F0F7FD] transition-colors"
+            className="p-1.5 rounded-lg text-[#9CA3AF] hover:text-[#111827] hover:bg-[#F4F5F7] transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -67,24 +67,24 @@ export const CreateCampaignModal: React.FC = () => {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#0F172A] mb-1">Campaign Name</label>
+            <label className="block text-xs font-semibold text-[#111827] mb-1">Campaign Name</label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Thaltej 4 BHK Villa Acquisition"
-              className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1">Assigned AI Agent</label>
+              <label className="block text-xs font-semibold text-[#111827] mb-1">Assigned AI Agent</label>
               <select
                 value={selectedAgentId}
                 onChange={(e) => setSelectedAgentId(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               >
                 {agents.map((a) => (
                   <option key={a.id} value={a.id}>
@@ -95,71 +95,71 @@ export const CreateCampaignModal: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1">Target Locality</label>
+              <label className="block text-xs font-semibold text-[#111827] mb-1">Target Locality</label>
               <input
                 type="text"
                 value={locality}
                 onChange={(e) => setLocality(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1">Property Inventory Focus</label>
+              <label className="block text-xs font-semibold text-[#111827] mb-1">Property Inventory Focus</label>
               <input
                 type="text"
                 value={targetPropertyType}
                 onChange={(e) => setTargetPropertyType(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1">Contacts to Dial</label>
+              <label className="block text-xs font-semibold text-[#111827] mb-1">Contacts to Dial</label>
               <input
                 type="number"
                 value={totalContacts}
                 onChange={(e) => setTotalContacts(Number(e.target.value))}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1">Daily Dialing Cap</label>
+              <label className="block text-xs font-semibold text-[#111827] mb-1">Daily Dialing Cap</label>
               <input
                 type="number"
                 value={dailyCallLimit}
                 onChange={(e) => setDailyCallLimit(Number(e.target.value))}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1">Concurrency Lines</label>
+              <label className="block text-xs font-semibold text-[#111827] mb-1">Concurrency Lines</label>
               <input
                 type="number"
                 value={concurrencyLimit}
                 onChange={(e) => setConcurrencyLimit(Number(e.target.value))}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#F8FCFF] border border-[#E2EEF8] text-xs font-medium text-[#0F172A] focus:outline-hidden focus:border-[#0284C7]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs font-medium text-[#111827] focus:outline-hidden focus:border-[#2563EB]"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#E2EEF8]">
+          <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#ECEEF1]">
             <button
               type="button"
               onClick={closeCreateCampaignModal}
-              className="px-4 py-2 rounded-xl border border-[#E2EEF8] text-xs font-semibold text-[#64748B] hover:text-[#0F172A] hover:bg-[#F0F7FD] transition-colors"
+              className="px-4 py-2 rounded-xl border border-[#E5E7EB] text-xs font-semibold text-[#4B5563] hover:text-[#111827] hover:border-[#CBD5E1] transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white text-xs font-bold shadow-md shadow-cyan-500/20 transition-all active:scale-98"
+              className="px-5 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-sm transition-all active:scale-98 cursor-pointer"
             >
               Launch Campaign
             </button>

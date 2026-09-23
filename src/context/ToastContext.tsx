@@ -47,14 +47,14 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
           return (
             <div
               key={toast.id}
-              className={`pointer-events-auto flex items-start justify-between p-4 rounded-2xl border shadow-card backdrop-blur-md transition-all duration-300 animate-slide-in-right bg-white ${
+              className={`pointer-events-auto flex items-start justify-between p-4 rounded-2xl border shadow-dropdown backdrop-blur-md transition-all duration-300 animate-slide-in-right bg-white ${
                 isSuccess
-                  ? 'border-[#10B981]/30 text-[#0F172A]'
+                  ? 'border-[#10B981]/30 text-[#111827]'
                   : isDanger
-                  ? 'border-[#EF4444]/30 text-[#0F172A]'
+                  ? 'border-[#EF4444]/30 text-[#111827]'
                   : isWarning
-                  ? 'border-[#F59E0B]/30 text-[#0F172A]'
-                  : 'border-[#BAE6FD] text-[#0F172A]'
+                  ? 'border-[#F59E0B]/30 text-[#111827]'
+                  : 'border-[#BFDBFE] text-[#111827]'
               }`}
             >
               <div className="flex items-start gap-3">
@@ -66,19 +66,19 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
                       ? 'bg-[#EF4444] shadow-xs'
                       : isWarning
                       ? 'bg-[#F59E0B] shadow-xs'
-                      : 'bg-[#06B6D4] shadow-cyan-glow animate-pulse'
+                      : 'bg-[#2563EB] shadow-xs'
                   }`}
                 />
                 <div>
-                  <h4 className="text-xs font-bold text-[#0F172A] leading-snug">{toast.title}</h4>
+                  <h4 className="text-xs font-bold text-[#111827] leading-snug">{toast.title}</h4>
                   {toast.message && (
-                    <p className="text-xs text-[#64748B] mt-0.5 leading-relaxed font-medium">{toast.message}</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5 leading-relaxed font-medium">{toast.message}</p>
                   )}
                 </div>
               </div>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-[#94A3B8] hover:text-[#0F172A] text-xs font-bold ml-3 px-1.5 py-0.5 rounded-md hover:bg-[#F0F7FD] transition-colors"
+                className="text-[#9CA3AF] hover:text-[#111827] text-xs font-bold ml-3 px-1.5 py-0.5 rounded-md hover:bg-[#F4F5F7] transition-colors"
               >
                 ✕
               </button>

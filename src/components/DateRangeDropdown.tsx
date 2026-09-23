@@ -29,16 +29,16 @@ export const DateRangeDropdown: React.FC = () => {
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E2EEF8] text-xs font-semibold text-[#0F172A] hover:bg-[#F0F7FD] shadow-subtle transition-colors"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E5E7EB] text-xs font-semibold text-[#111827] hover:bg-[#F4F5F7] shadow-xs transition-colors"
       >
-        <Calendar className="w-3.5 h-3.5 text-[#0284C7]" />
+        <Calendar className="w-3.5 h-3.5 text-[#2563EB]" />
         <span>{dateRangeLabel}</span>
-        <ChevronDown className={`w-3.5 h-3.5 text-[#94A3B8] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 text-[#9CA3AF] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-1.5 w-56 rounded-2xl bg-white border border-[#E2EEF8] shadow-dropdown z-30 py-1.5 animate-in fade-in-50 zoom-in-95">
-          <div className="px-3.5 py-1 text-[10px] uppercase font-bold tracking-wider text-[#94A3B8]">
+        <div className="absolute right-0 mt-1.5 w-56 rounded-2xl bg-white border border-[#ECEEF1] shadow-dropdown z-30 py-1.5 animate-in fade-in-50 zoom-in-95">
+          <div className="px-3.5 py-1 text-[10px] uppercase font-bold tracking-wider text-[#9CA3AF]">
             Date Range Filter
           </div>
           {options.map((opt) => {
@@ -51,14 +51,14 @@ export const DateRangeDropdown: React.FC = () => {
                   setIsOpen(false);
                 }}
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-xs text-left transition-colors ${
-                  isSelected ? 'bg-[#E0F2FE] text-[#0284C7] font-bold' : 'text-[#0F172A] hover:bg-[#F0F7FD]'
+                  isSelected ? 'bg-[#EFF6FF] text-[#2563EB] font-bold' : 'text-[#111827] hover:bg-[#F4F5F7]'
                 }`}
               >
                 <div>
                   <div>{opt.label}</div>
-                  <div className="text-[10px] text-[#64748B] font-normal">{opt.period}</div>
+                  <div className="text-[10px] text-[#6B7280] font-normal">{opt.period}</div>
                 </div>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#0284C7]" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-[#2563EB]" />}
               </button>
             );
           })}

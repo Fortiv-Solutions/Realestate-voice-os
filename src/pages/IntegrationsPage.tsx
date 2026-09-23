@@ -82,8 +82,8 @@ export const IntegrationsPage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       <div>
-        <h2 className="text-base font-extrabold text-[#0F172A]">System Integrations & Gateways</h2>
-        <p className="text-xs text-[#64748B]">Connected internal engines and configurable voice/telephony providers</p>
+        <h2 className="text-xl font-extrabold text-[#111827] tracking-tight">System Integrations & Gateways</h2>
+        <p className="text-xs text-[#6B7280] mt-1">Connected internal engines and configurable voice/telephony providers</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -96,38 +96,38 @@ export const IntegrationsPage: React.FC = () => {
           return (
             <div
               key={item.id}
-              className="p-5 rounded-2xl bg-white border border-[#E2EEF8] hover:border-[#BAE6FD] hover:shadow-cyan-glow/20 shadow-card transition-all flex flex-col justify-between space-y-4"
+              className="p-5 rounded-2xl bg-white border border-[#ECEEF1] hover:border-[#CBD5E1] hover:shadow-card-hover shadow-card transition-all flex flex-col justify-between space-y-4"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#F8FCFF] text-[#0284C7] border border-[#E2EEF8] flex items-center justify-center">
-                    <IconComponent className="w-5 h-5 text-[#0284C7]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center">
+                    <IconComponent className="w-5 h-5 text-[#2563EB]" />
                   </div>
 
                   <span
                     className={`text-xs font-bold px-2.5 py-0.5 rounded-lg border flex items-center gap-1.5 ${
                       isActive
-                        ? 'bg-[#E0F2FE] text-[#0284C7] border-[#BAE6FD]'
+                        ? 'bg-[#ECFDF5] text-[#10B981] border-[#A7F3D0]'
                         : isConfigurable
-                        ? 'bg-[#ECFEFF] text-[#0891B2] border-[#A5F3FC]'
-                        : 'bg-[#F1F5F9] text-[#64748B] border-[#E2E8F0]'
+                        ? 'bg-[#EFF6FF] text-[#2563EB] border-[#BFDBFE]'
+                        : 'bg-[#F3F4F6] text-[#6B7280] border-[#E5E7EB]'
                     }`}
                   >
                     <span
                       className={`w-1.5 h-1.5 rounded-full ${
-                        isActive ? 'bg-[#0284C7]' : isConfigurable ? 'bg-[#06B6D4] animate-pulse' : 'bg-[#94A3B8]'
+                        isActive ? 'bg-[#10B981]' : isConfigurable ? 'bg-[#2563EB] animate-pulse' : 'bg-[#9CA3AF]'
                       }`}
                     />
                     <span>{item.status}</span>
                   </span>
                 </div>
 
-                <h3 className="text-xs font-bold text-[#0F172A]">{item.name}</h3>
-                <p className="text-[11px] text-[#94A3B8] font-medium">{item.category} • {item.provider}</p>
-                <p className="text-xs text-[#64748B] mt-2 leading-relaxed">{item.description}</p>
+                <h3 className="text-xs font-bold text-[#111827]">{item.name}</h3>
+                <p className="text-[11px] text-[#9CA3AF] font-medium mt-0.5">{item.category} • {item.provider}</p>
+                <p className="text-xs text-[#6B7280] mt-2 leading-relaxed">{item.description}</p>
               </div>
 
-              <div className="pt-3 border-t border-[#E2EEF8]">
+              <div className="pt-3 border-t border-[#F0F2F5]">
                 <button
                   onClick={() => {
                     showToast(
@@ -138,12 +138,12 @@ export const IntegrationsPage: React.FC = () => {
                       'info'
                     );
                   }}
-                  className={`w-full py-2 rounded-xl text-xs font-bold border transition-colors ${
+                  className={`w-full py-2 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                     isActive
-                      ? 'bg-[#F8FCFF] border-[#E2EEF8] text-[#0F172A] hover:bg-[#F0F7FD]'
+                      ? 'bg-[#F8F9FA] border-[#E5E7EB] text-[#111827] hover:bg-[#F3F4F6]'
                       : isConfigurable
-                      ? 'bg-gradient-to-r from-[#0284C7] to-[#06B6D4] hover:from-[#0369A1] hover:to-[#0891B2] text-white border-transparent shadow-xs'
-                      : 'bg-white border-[#E2EEF8] text-[#64748B] hover:text-[#0F172A]'
+                      ? 'bg-[#2563EB] hover:bg-[#1D4ED8] text-white border-transparent shadow-xs'
+                      : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:text-[#111827] hover:border-[#CBD5E1]'
                   }`}
                 >
                   {isActive ? 'View Diagnostics' : isConfigurable ? 'Configure Keys' : 'Connect'}
